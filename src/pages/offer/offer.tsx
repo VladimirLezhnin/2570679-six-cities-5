@@ -2,21 +2,21 @@ import { useParams } from 'react-router-dom';
 import OfferGallery from './offer-gallery/offer-gallery';
 import OfferGoods from './offer-goods/offer-goods';
 import ReviewForm from './review-form/review-form';
-import { capitalizeFirstLetter } from '../../../helpers/capitalize-first-letter';
-import { AppRoute, AuthorizationStatus } from '../../../enums';
-import OffersList from '../../offers-list/offers-list';
+import { capitalizeFirstLetter } from '../../helpers/capitalize-first-letter';
+import { AppRoute, AuthorizationStatus } from '../../enums';
+import OffersList from '../../components/offers-list/offers-list';
 import ReviewsList from './reviews-list/reviews-list';
-import Map from '../../map/map';
-import { addOfferToFavorites, fetchNearOffers, fetchOfferComments, fetchOfferDetails, removeOfferFromFavorites } from '../../../api/api-actions';
+import Map from '../../components/map/map';
+import { addOfferToFavorites, fetchNearOffers, fetchOfferComments, fetchOfferDetails, removeOfferFromFavorites } from '../../api/api-actions';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../..';
-import Header from '../../header/header';
-import SpinnerLoader from '../../loaders/spinner-loader/spinner';
-import { roundNumberWithTieBreak } from '../../../helpers/round-number-with-tiebreak';
-import { pluralizeWord } from '../../../helpers/pluralize-word';
-import { navigateTo } from '../../../utils/navigate/navigate-to';
-import { setOfferDetails } from '../../../store/action';
+import { RootState, AppDispatch } from '../..';
+import Header from '../../components/header/header';
+import SpinnerLoader from '../../components/loaders/spinner-loader/spinner';
+import { roundNumberWithTieBreak } from '../../helpers/round-number-with-tiebreak';
+import { pluralizeWord } from '../../helpers/pluralize-word';
+import { navigateTo } from '../../utils/navigate/navigate-to';
+import { setOfferDetails } from '../../store/action';
 
 
 function OfferPage() {
@@ -167,7 +167,7 @@ function OfferPage() {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {<OffersList offers={nearOffers} setActiveOfferCardId={() => { }} />}
+              {<OffersList offers={nearOffers} onMouseOverOffer={() => { }} />}
             </div>
           </section>
         </div>

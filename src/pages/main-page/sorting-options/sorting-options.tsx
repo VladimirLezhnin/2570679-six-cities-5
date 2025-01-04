@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SortingOption } from '../../../../enums';
-import { changeOffersSortingOption } from '../../../../store/action';
-import { RootState } from '../../../..';
+import { SortingOption } from '../../../enums';
+import { changeOffersSortingOption } from '../../../store/action';
+import { RootState } from '../../..';
 
 function buildClassName(option: SortingOption, activeOption: SortingOption) {
   const activeOptionString = option === activeOption ? ' places__option--active' : '';

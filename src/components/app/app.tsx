@@ -1,8 +1,8 @@
-import FavoritesPage from '../pages/favorites/favorites';
-import MainPage from '../pages/main-page/main-page';
-import Login from '../pages/login/login';
-import OfferPage from '../pages/offer/offer';
-import NotFoundPage from '../pages/not-found-page/not-found-page';
+import FavoritesPage from '../../pages/favorites/favorites';
+import MainPage from '../../pages/main-page/main-page';
+import Login from '../../pages/login/login';
+import OfferPage from '../../pages/offer/offer';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppRoute } from '../../enums';
 import PrivateRoute from '../private-route/private-route';

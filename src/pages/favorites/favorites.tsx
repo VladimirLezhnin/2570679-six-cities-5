@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { Offer } from '../../../types';
-import OffersList from '../../offers-list/offers-list';
-import { RootState } from '../../..';
+import { Offer } from '../../types';
+import OffersList from '../../components/offers-list/offers-list';
+import { RootState } from '../..';
 import { Link } from 'react-router-dom';
-import Header from '../../header/header';
+import Header from '../../components/header/header';
 import FavoritesEmpty from './favorites-empty';
-import Footer from '../../footer/footer';
+import Footer from '../../components/footer/footer';
 
 
 function FavoritesPage() {
@@ -40,7 +40,7 @@ function FavoritesPage() {
                     </div>
                   </div>
                   <div className="favorites__places">
-                    <OffersList offers={offersByCity[city]} setActiveOfferCardId={() => {}} />
+                    <OffersList offers={offersByCity[city]} onMouseOverOffer={() => {}} />
                   </div>
                 </li>
               ))}

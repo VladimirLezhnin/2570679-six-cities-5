@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../..';
-import { sendComment } from '../../../../api/api-actions';
+import { RootState, AppDispatch } from '../../..';
+import { sendComment } from '../../../api/api-actions';
 
 function ReviewForm() {
   const dispatch = useDispatch<AppDispatch>();

@@ -11,7 +11,7 @@ import { roundNumberWithTieBreak } from '../../../helpers/round-number-with-tieb
 
 type OfferCardProps = {
   offer: Offer;
-  setActiveOfferCardId: React.Dispatch<React.SetStateAction<string>>;
+  onMouseOver: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const GetStyleParameters = (pathName: string) => {
@@ -41,7 +41,7 @@ const GetStyleParameters = (pathName: string) => {
   }
 };
 
-function OfferCard({offer: offer, setActiveOfferCardId: setActivePlaceCardId}: OfferCardProps) {
+function OfferCard({offer: offer, onMouseOver: onMouseOver}: OfferCardProps) {
   const location = useLocation();
   const { id, price, previewImage, title, rating, isPremium, type } = offer;
   const { block, imageWidth, imageHeight } = GetStyleParameters(location.pathname);
@@ -51,11 +51,11 @@ function OfferCard({offer: offer, setActiveOfferCardId: setActivePlaceCardId}: O
   const dispatch = useDispatch<AppDispatch>();
 
   const handleMouseEnter = () => {
-    setActivePlaceCardId(id);
+    onMouseOver(id);
   };
 
   const handleMouseLeave = () => {
-    setActivePlaceCardId('');
+    onMouseOver('');
   };
 
   const handleBookmarkClick = () => {

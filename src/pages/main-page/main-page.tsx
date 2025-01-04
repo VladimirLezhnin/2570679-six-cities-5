@@ -1,17 +1,17 @@
-import OffersList from '../../offers-list/offers-list';
-import Map from '../../map/map';
+import OffersList from '../../components/offers-list/offers-list';
+import Map from '../../components/map/map';
 import CityList from './city-list/city-list';
-import { Cities } from '../../../mocks/cities';
+import { Cities } from '../../mocks/cities';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOffersByCity } from '../../../store/selectors';
+import { selectOffersByCity } from '../../store/selectors';
 import SortingOptions from './sorting-options/sorting-options';
-import { sortOffersByOption } from '../../../helpers/sort-offers-by-option';
-import { useEffect, useState } from 'react';
-import { fetchOffers } from '../../../api/api-actions';
-import { RootState, AppDispatch } from '../../..';
-import SkeletonOffersLoader from '../../loaders/offers-loader/offers-loader';
+import { sortOffersByOption } from '../../helpers/sort-offers-by-option';
+import { useCallback, useEffect, useState } from 'react';
+import { fetchOffers } from '../../api/api-actions';
+import { RootState, AppDispatch } from '../..';
+import SkeletonOffersLoader from '../../components/loaders/offers-loader/offers-loader';
 import MainPageEmpty from './main-page-empty';
-import Header from '../../header/header';
+import Header from '../../components/header/header';
 
 
 function MainPage() {
@@ -19,6 +19,7 @@ function MainPage() {
   const sortingOption = useSelector((state: RootState) => state.offers.offersSortingOption);
   const offers = sortOffersByOption(useSelector(selectOffersByCity), sortingOption);
   const [activeOfferCardId, setActiveOfferCardId] = useState('');
+  const onMouseOverOffer = useCallback(setActiveOfferCardId, [setActiveOfferCardId]);
   const activeOffer = offers.find((x) => x.id === activeOfferCardId);
   const city = useSelector((state: RootState) => state.city);
   const isOffersDataLoading = useSelector((state: RootState) => state.offers.isOffersDataLoading);
@@ -48,7 +49,7 @@ function MainPage() {
                 <div className="cities__places-list places__list tabs__content">
                   {isOffersDataLoading
                     ? <SkeletonOffersLoader count={10} />
-                    : <OffersList offers={offers} setActiveOfferCardId={setActiveOfferCardId} />}
+                    : <OffersList offers={offers} onMouseOverOffer={onMouseOverOffer} />}
                 </div>
               </section>
               <div className="cities__right-section">

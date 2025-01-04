@@ -1,5 +1,5 @@
-import { Review } from '../../../../../types';
-import { formatDateToMonthYear } from '../../../../../helpers/format-date-to-month-year';
+import { Review } from '../../../../types';
+import { formatDateToMonthYear } from '../../../../helpers/format-date-to-month-year';
 
 type ReviewItemProps = {
   review: Review;

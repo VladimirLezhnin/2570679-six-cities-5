@@ -1,7 +1,7 @@
-import { City } from '../../../../types';
+import { City } from '../../../types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCity } from '../../../../store/action';
-import { RootState } from '../../../..';
+import { changeCity } from '../../../store/action';
+import { RootState } from '../../..';
 
 
 type CityListProps = {

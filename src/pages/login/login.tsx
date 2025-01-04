@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from '../../../api/api-actions';
+import { loginAction } from '../../api/api-actions';
 import { Link } from 'react-router-dom';
-import { AppDispatch, RootState } from '../../..';
-import Header from '../../header/header';
-import { AppRoute, AuthorizationStatus } from '../../../enums';
-import { navigateTo } from '../../../utils/navigate/navigate-to';
-import { changeCity } from '../../../store/action';
-import { Cities } from '../../../mocks/cities';
-import { getRandomIntegerInRange } from '../../../helpers/get-random-integer-in-range';
+import { AppDispatch, RootState } from '../..';
+import Header from '../../components/header/header';
+import { AppRoute, AuthorizationStatus } from '../../enums';
+import { navigateTo } from '../../utils/navigate/navigate-to';
+import { changeCity } from '../../store/action';
+import { Cities } from '../../mocks/cities';
+import { getRandomIntegerInRange } from '../../helpers/get-random-integer-in-range';
 
 
 function Login() {

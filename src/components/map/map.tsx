@@ -49,13 +49,20 @@ function Map({ city, offersLocations, activeOfferLocation, block }: MapProps): J
         });
 
         marker
-          .setIcon(
-            activeOfferLocation !== undefined && offerLocation.offerId === activeOfferLocation.offerId
-              ? currentCustomIcon
-              : defaultCustomIcon
-          )
+          .setIcon(defaultCustomIcon)
           .addTo(markerLayer);
       });
+
+      if (activeOfferLocation) {
+        const marker = new Marker({
+          lat: activeOfferLocation.point.lat,
+          lng: activeOfferLocation.point.lng,
+        });
+
+        marker
+          .setIcon(currentCustomIcon)
+          .addTo(markerLayer);
+      }
 
       return () => {
         map.removeLayer(markerLayer);
@@ -72,7 +79,8 @@ function Map({ city, offersLocations, activeOfferLocation, block }: MapProps): J
         left: 0,
         right: 0,
       }}
-    ></section>
+    >
+    </section>
   );
 }
 

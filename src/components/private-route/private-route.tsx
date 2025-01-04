@@ -13,9 +13,7 @@ function PrivateRoute({children}: PrivateRouteProps) {
   const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
   useEffect(() => {
     dispatch(checkAuthAction());
-  }, [authorizationStatus])
-
-  console.log(authorizationStatus);
+  }, [dispatch, authorizationStatus]);
 
   return (
     authorizationStatus === AuthorizationStatus.Auth

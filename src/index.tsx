@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createAPI } from './api/api';
 import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
 import rootReducer from './store/rootReducer';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const api = createAPI();

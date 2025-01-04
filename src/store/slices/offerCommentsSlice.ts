@@ -4,7 +4,7 @@ import { Review } from '../../types';
 
 interface OfferCommentsState {
   offerComments: Review[];
-  commentSendingStatus: boolean
+  commentSendingStatus: boolean;
 }
 
 const initialState: OfferCommentsState = {

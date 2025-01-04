@@ -73,7 +73,8 @@ function OfferCard({ offer: offer, onMouseOver: onMouseOver }: OfferCardProps) {
   return (
     <article className={`${block}__card place-card`}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      onMouseLeave={handleMouseLeave}
+    >
       {
         isPremium ?
           <div className="place-card__mark">

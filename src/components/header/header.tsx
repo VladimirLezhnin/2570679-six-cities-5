@@ -9,7 +9,7 @@ import { logoutAction } from '../../api/api-actions';
 function Header() {
   const dispatch = useDispatch<AppDispatch>();
   const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
-  const userData = useSelector((state: RootState) => state.userData);
+  const userData = useSelector((state: RootState) => state.auth.userData);
   const favorites = useSelector((state: RootState) => state.favoritesOffers.favoriteOffers);
 
   const handleSignoutButtonClick = (event: React.FormEvent) => {
@@ -34,7 +34,7 @@ function Header() {
                   <Link className="header__nav-link header__nav-link--profile" to={'/favorites'}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">{userData?.userData?.email}</span>
+                    <span className="header__user-name user__name">{userData?.email}</span>
                     <span className="header__favorite-count">{favorites.length}</span>
                   </Link>
                 </li>

@@ -1,13 +1,21 @@
 import {Navigate} from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../enums';
-import { PropsWithChildren } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../..';
+import { PropsWithChildren, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../..';
+import { checkAuthAction } from '../../api/api-actions';
 
 type PrivateRouteProps = PropsWithChildren;
 
 function PrivateRoute({children}: PrivateRouteProps) {
+  const dispatch = useDispatch<AppDispatch>();
+  dispatch(checkAuthAction());
   const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
+  useEffect(() => {
+    dispatch(checkAuthAction());
+  }, [authorizationStatus])
+
+  console.log(authorizationStatus);
 
   return (
     authorizationStatus === AuthorizationStatus.Auth

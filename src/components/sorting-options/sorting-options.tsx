@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { State } from '../../store/state-type';
 import { SortingOption } from '../../enums';
-import { changeOffersSortingAction } from '../../store/action';
+import { changeOffersSortingOption } from '../../store/action';
+import { RootState } from '../..';
 
 function buildOptionClassName(option: SortingOption, activeOption: SortingOption) {
   const activeOptionString = option === activeOption ? ' places__option--active' : '';
@@ -26,14 +26,14 @@ function buildOption(option: SortingOption, activeOption: SortingOption, handleO
 function SortingOptions() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const activeOption = useSelector((state: State) => state.sortingOption);
+  const activeOption = useSelector((state: RootState) => state.offers.offersSortingOption);
 
   const toggleOptions = () => {
     setIsOpen((prevState) => !prevState);
   };
 
   const handleOptionClick = (option: SortingOption) => {
-    dispatch(changeOffersSortingAction(option));
+    dispatch(changeOffersSortingOption(option));
   };
 
   return (

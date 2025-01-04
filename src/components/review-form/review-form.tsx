@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../..';
-import { sendCommentAction } from '../../api/api-actions';
+import { sendComment } from '../../api/api-actions';
 
 function ReviewForm() {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +23,7 @@ function ReviewForm() {
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    dispatch(sendCommentAction({ offerId: offerId, comment: review, rating: Number.parseInt(rating, 10) }));
+    dispatch(sendComment({ offerId: offerId, comment: review, rating: Number.parseInt(rating, 10) }));
     setRating('');
     setReview('');
   };

@@ -19,7 +19,6 @@ function Layout({ children } : PropsWithChildren) {
     <div className="layout">
       {(isExistentAppRoute || isOfferPage) && !isNotFoundPage && <Header/>}
       <main>{children}</main>
-      {(isExistentAppRoute || isOfferPage) && !isNotFoundPage && <Footer/>}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Offer } from '../types';
-import { addToFavoritesAction, removeFromFavoritesAction, setFavoriteOffersAction } from './action';
+import { addOfferToFavorites, removeOfferFromFavorites, fetchFavoriteOffers } from '../api/api-actions';
 
 interface FavoritesState {
   favoriteOffers: Offer[];
@@ -16,15 +16,15 @@ const favoritesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addToFavoritesAction, (state, action: PayloadAction<Offer>) => {
+      .addCase(addOfferToFavorites.fulfilled, (state, action: PayloadAction<Offer>) => {
         state.favoriteOffers.push(action.payload);
       })
-      .addCase(removeFromFavoritesAction, (state, action: PayloadAction<Offer>) => {
+      .addCase(removeOfferFromFavorites.fulfilled, (state, action: PayloadAction<Offer>) => {
         state.favoriteOffers = state.favoriteOffers.filter(
           (offer) => offer.id !== action.payload.id
         );
       })
-      .addCase(setFavoriteOffersAction, (state, action: PayloadAction<Offer[]>) => {
+      .addCase(fetchFavoriteOffers.fulfilled, (state, action: PayloadAction<Offer[]>) => {
         state.favoriteOffers = action.payload;
       });
   },

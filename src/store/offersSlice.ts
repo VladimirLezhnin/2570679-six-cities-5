@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setOffersAction, setOffersLoadingStatus } from './action';
+import { changeOffersSortingOption, setOffersLoadingStatus } from './action';
+import { fetchOffers } from '../api/api-actions';
 import { Offer } from '../types';
+import { SortingOption } from '../enums';
 
 export interface OffersState {
   offers: Offer[];
   isOffersDataLoading: boolean;
-}
+  offersSortingOption: SortingOption;
+};
 
 const initialState: OffersState = {
   offers: [],
   isOffersDataLoading: false,
+  offersSortingOption: SortingOption.Popular
 };
 
 const offersSlice = createSlice({
@@ -18,11 +22,14 @@ const offersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(setOffersAction, (state, action) => {
+      .addCase(fetchOffers.fulfilled, (state, action) => {
         state.offers = action.payload;
       })
       .addCase(setOffersLoadingStatus, (state, action) => {
         state.isOffersDataLoading = action.payload;
+      })
+      .addCase(changeOffersSortingOption, (state, action) => {
+        state.offersSortingOption = action.payload;
       });
   },
 });

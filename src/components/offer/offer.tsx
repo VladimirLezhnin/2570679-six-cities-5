@@ -7,7 +7,7 @@ import { AppRoute, AuthorizationStatus } from '../../enums';
 import OffersList from '../offers-list/offers-list';
 import ReviewsList from '../reviews-list/reviews-list';
 import Map from '../map/map';
-import { fetchNearOffersAction, fetchOfferComments, fetchOfferDetailAction } from '../../api/api-actions';
+import { fetchNearOffers, fetchOfferComments, fetchOfferDetails } from '../../api/api-actions';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../..';
@@ -24,8 +24,8 @@ function OfferPage() {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchOfferDetailAction(id));
-      dispatch(fetchNearOffersAction(id));
+      dispatch(fetchOfferDetails(id));
+      dispatch(fetchNearOffers(id));
       dispatch(fetchOfferComments(id));
     }
   }, [dispatch, id]);

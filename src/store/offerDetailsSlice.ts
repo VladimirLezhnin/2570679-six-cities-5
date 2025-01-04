@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setOfferDetailAction } from './action';
+import { fetchOfferDetails } from '../api/api-actions';
 import { OfferDetails } from '../types';
 
 interface OfferDetailsState {
@@ -15,7 +15,7 @@ const offerDetailsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(setOfferDetailAction, (state, action) => {
+    builder.addCase(fetchOfferDetails.fulfilled, (state, action) => {
       state.offerDetails = action.payload;
     });
   },

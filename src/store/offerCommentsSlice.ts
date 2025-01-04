@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setOfferCommentsAction } from './action';
+import { fetchOfferComments } from '../api/api-actions';
 import { Review } from '../types';
 
 interface OfferCommentsState {
@@ -15,7 +15,7 @@ const offerCommentsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(setOfferCommentsAction, (state, action) => {
+    builder.addCase(fetchOfferComments.fulfilled, (state, action) => {
       state.offerComments = action.payload;
     });
   },

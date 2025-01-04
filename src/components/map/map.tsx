@@ -63,7 +63,17 @@ function Map({ city, offersLocations, activeOfferLocation, block }: MapProps): J
     }
   }, [map, city, offersLocations, activeOfferLocation]);
 
-  return <section className={block} ref={mapRef}></section>;
+  return (
+    <section
+      className={`${block}__map map`}
+      ref={mapRef}
+      style={{
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+    ></section>
+  );
 }
 
 export default Map;

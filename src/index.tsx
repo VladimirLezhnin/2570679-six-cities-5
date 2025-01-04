@@ -4,7 +4,7 @@ import App from './components/app/app';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { createAPI } from './api/api';
-import { checkAuthAction } from './api/api-actions';
+import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
 import rootReducer from './store/rootReducer';
 
 
@@ -20,6 +20,7 @@ export const store = configureStore({
 });
 
 store.dispatch(checkAuthAction());
+store.dispatch(fetchFavoriteOffers());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

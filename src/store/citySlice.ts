@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { changeCityAction } from './action';
+import { changeCity } from './action';
 
 interface CityState {
   name: string;
@@ -24,7 +24,7 @@ const citySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(changeCityAction, (state, action) => {
+    builder.addCase(changeCity, (state, action) => {
       state.name = action.payload.name;
       state.location = action.payload.location;
     });

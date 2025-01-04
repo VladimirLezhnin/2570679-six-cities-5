@@ -1,7 +1,7 @@
 import { City } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCityAction } from '../../store/action';
-import { State } from '../../store/state-type';
+import { changeCity } from '../../store/action';
+import { RootState } from '../..';
 
 
 type CityListProps = {
@@ -10,10 +10,10 @@ type CityListProps = {
 
 function CityList({cities}: CityListProps) {
   const dispatch = useDispatch();
-  const currentCity = useSelector((state: State) => state.city?.name);
+  const currentCity = useSelector((state: RootState) => state.city?.name);
 
   const handleCityClick = (city: City) => {
-    dispatch(changeCityAction(city));
+    dispatch(changeCity(city));
   };
 
   return (

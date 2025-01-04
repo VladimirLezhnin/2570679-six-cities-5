@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setNearOffersAction } from './action';
+import { fetchNearOffers } from '../api/api-actions';
 import { Offer } from '../types';
 
 interface NearOffersState {
@@ -15,7 +15,7 @@ const nearOffersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(setNearOffersAction, (state, action) => {
+    builder.addCase(fetchNearOffers.fulfilled, (state, action) => {
       state.nearOffers = action.payload;
     });
   },

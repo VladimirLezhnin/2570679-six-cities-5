@@ -4,28 +4,27 @@ import CityList from '../city-list/city-list';
 import { Cities } from '../../mocks/cities';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOffersByCity } from '../../store/selectors';
-import { State } from '../../store/state-type';
 import SortingOptions from '../sorting-options/sorting-options';
 import { sortOffersByOption } from '../../helpers/sort-offers';
 import { useEffect, useState } from 'react';
-import { fetchOffersAction } from '../../api/api-actions';
-import { AppDispatch } from '../..';
+import { fetchOffers } from '../../api/api-actions';
+import { AppDispatch, RootState } from '../..';
 import SkeletonLoader from '../../offers-loader/offers-loader';
 import MainPageEmpty from './main-page-empty';
 
 
 function MainPage() {
   const dispatch = useDispatch<AppDispatch>();
-  const sortingOption = useSelector((state: State) => state.sortingOption);
+  const sortingOption = useSelector((state: RootState) => state.offers.offersSortingOption);
   const offers = sortOffersByOption(useSelector(selectOffersByCity), sortingOption);
   const [activeOfferCardId, setActiveOfferCardId] = useState('');
   const activeOffer = offers.find((x) => x.id === activeOfferCardId);
-  const city = useSelector((state: State) => state.city);
-  const isOffersDataLoading = useSelector((state: State) => state.isOffersDataLoading);
+  const city = useSelector((state: RootState) => state.city);
+  const isOffersDataLoading = useSelector((state: RootState) => state.offers.isOffersDataLoading);
 
   useEffect(() => {
     if (!offers.length) {
-      dispatch(fetchOffersAction());
+      dispatch(fetchOffers());
     }
   }, [dispatch, offers.length]);
 
@@ -69,7 +68,7 @@ function MainPage() {
                     },
                     offerId: activeOffer.id
                   }}
-                  block={'cities__map'}
+                  block='cities'
                 />
               </div>
             </div>

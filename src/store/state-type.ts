@@ -24,5 +24,3 @@ export type AuthState = {
 export type LoadingState = {
   isOffersDataLoading: boolean;
 };
-
-export type State = CityState & OffersState & SortingState & AuthState & LoadingState;

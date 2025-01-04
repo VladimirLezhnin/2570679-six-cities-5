@@ -4,7 +4,7 @@ import { UserData } from '../types';
 
 interface UserDataState {
   userData: UserData | undefined;
-}
+};
 
 const initialState: UserDataState = {
   userData: undefined,

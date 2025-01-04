@@ -5,7 +5,7 @@ import capitalizeFirstLetter from '../../helpers/capitalize-first-letter';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../..';
 import { useDispatch } from 'react-redux';
-import { addOfferToFavoritesAction, removeOfferFromFavoritesAction } from '../../api/api-actions';
+import { addOfferToFavorites, removeOfferFromFavorites } from '../../api/api-actions';
 
 type OfferCardProps = {
   offer: Offer;
@@ -57,9 +57,9 @@ function OfferCard({offer: offer, setActiveOfferCardId: setActivePlaceCardId}: O
 
   const handleBookmarkClick = () => {
     if (isFavorite) {
-      dispatch(removeOfferFromFavoritesAction(offer.id));
+      dispatch(removeOfferFromFavorites(offer.id));
     } else {
-      dispatch(addOfferToFavoritesAction(offer.id));
+      dispatch(addOfferToFavorites(offer.id));
     }
   };
 

@@ -6,6 +6,7 @@ import { sendComment } from '../../../api/api-actions';
 function ReviewForm() {
   const dispatch = useDispatch<AppDispatch>();
   const offerId = useSelector((state: RootState) => state.offerDetails?.offerDetails?.id);
+  const commentSendingStatus = useSelector((state: RootState) => state.offerComments.commentSendingStatus);
   const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
 
@@ -28,7 +29,7 @@ function ReviewForm() {
     setReview('');
   };
 
-  const isSubmitDisabled = !rating || review.length < 50 || review.length > 300;
+  const isSubmitDisabled = !rating || review.length < 50 || review.length > 300 || commentSendingStatus;
 
   const titles = {
     5: 'perfect',
@@ -47,6 +48,7 @@ function ReviewForm() {
         {[5, 4, 3, 2, 1].map((value) => (
           <React.Fragment key={value}>
             <input
+              disabled={commentSendingStatus}
               className="form__rating-input visually-hidden"
               name="rating"
               value={value}
@@ -68,6 +70,7 @@ function ReviewForm() {
         ))}
       </div>
       <textarea
+        disabled={commentSendingStatus}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"

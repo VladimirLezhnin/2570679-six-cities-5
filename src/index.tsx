@@ -7,6 +7,7 @@ import { createAPI } from './api/api';
 import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
 import rootReducer from './store/rootReducer';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 
 export const api = createAPI();
@@ -30,6 +31,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer
+        position="bottom-left"
+        closeOnClick
+        pauseOnHover
+      />
       <App />
     </Provider>
   </React.StrictMode>

@@ -33,7 +33,6 @@ function OfferPage() {
 
   const details = useSelector((state: RootState) => state.offerDetails.offerDetails);
   const nearOffers = useSelector((state: RootState) => state.nearOffers.nearOffers.slice(0, 3));
-  nearOffers.push();
   const offerCommentsState = useSelector((state: RootState) => state.offerComments);
   const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
 

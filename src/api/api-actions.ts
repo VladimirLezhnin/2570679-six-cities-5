@@ -4,7 +4,7 @@ import { AuthData, Offer, OfferDetails, Review, UserData } from '../types.js';
 import { saveToken, dropToken } from '../api/token.js';
 import { APIRoute, AppRoute } from '../enums.js';
 import { AppDispatch, RootState } from '../index.js';
-import { navigateTo } from '../utils/navigate/navigate.js';
+import { navigateTo } from '../utils/navigate/navigate-to.js';
 
 
 export const checkAuthAction = createAsyncThunk<UserData, undefined, {

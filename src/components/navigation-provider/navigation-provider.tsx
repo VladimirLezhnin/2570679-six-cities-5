@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setNavigateFunction } from '../../utils/navigate/navigate';
+import { setNavigateFunction } from '../../utils/navigate/navigate-to';
 
 const NavigationProvider: React.FC = () => {
   const navigate = useNavigate();

@@ -15,7 +15,7 @@ import Header from '../../header/header';
 import SpinnerLoader from '../../loaders/spinner-loader/spinner';
 import { roundNumberWithTieBreak } from '../../../helpers/round-number-with-tiebreak';
 import { pluralizeWord } from '../../../helpers/pluralize-word';
-import { navigateTo } from '../../../utils/navigate/navigate';
+import { navigateTo } from '../../../utils/navigate/navigate-to';
 import { setOfferDetails } from '../../../store/action';
 
 

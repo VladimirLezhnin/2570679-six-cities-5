@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../..';
 import { useDispatch } from 'react-redux';
 import { addOfferToFavorites, removeOfferFromFavorites } from '../../../api/api-actions';
-import { navigateTo } from '../../../utils/navigate/navigate';
+import { navigateTo } from '../../../utils/navigate/navigate-to';
 import { roundNumberWithTieBreak } from '../../../helpers/round-number-with-tiebreak';
 
 type OfferCardProps = {

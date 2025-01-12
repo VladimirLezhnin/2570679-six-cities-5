@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { createAPI } from './api/api';
 import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
-import rootReducer from './store/rootReducer';
+import rootReducer from './store/root-reducer';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 

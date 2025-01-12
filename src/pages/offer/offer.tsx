@@ -9,19 +9,20 @@ import ReviewsList from './reviews-list/reviews-list';
 import Map from '../../components/map/map';
 import { addOfferToFavorites, fetchNearOffers, fetchOfferComments, fetchOfferDetails, removeOfferFromFavorites } from '../../api/api-actions';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../..';
 import Header from '../../components/header/header';
-import SpinnerLoader from '../../components/loaders/spinner-loader/spinner';
+import SpinnerLoader from '../../components/loaders/spinner-loader/spinner-loader';
 import { roundNumberWithTieBreak } from '../../helpers/round-number-with-tiebreak';
 import { pluralizeWord } from '../../helpers/pluralize-word';
 import { navigateTo } from '../../utils/navigate/navigate-to';
 import { setOfferDetails } from '../../store/action';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { selectAuthorizationStatus, selectLimitedOffersNearby, selectOfferReviews, selectOfferDetails } from '../../store/selectors';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
 
 
 function OfferPage() {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (id) {
@@ -31,10 +32,10 @@ function OfferPage() {
     }
   }, [dispatch, id]);
 
-  const details = useSelector((state: RootState) => state.offerDetails.offerDetails);
-  const nearOffers = useSelector((state: RootState) => state.nearOffers.nearOffers.slice(0, 3));
-  const offerCommentsState = useSelector((state: RootState) => state.offerComments);
-  const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
+  const details = useAppSelector(selectOfferDetails);
+  const nearOffers = useAppSelector(selectLimitedOffersNearby);
+  const reviews = useAppSelector(selectOfferReviews);
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
 
   if (!details || !id) {
     return <SpinnerLoader />;
@@ -57,7 +58,6 @@ function OfferPage() {
     }
   };
 
-  window.scrollTo(0, 0);
   return (
     <div className="page">
       <Header />
@@ -135,7 +135,7 @@ function OfferPage() {
                 </div>
               </div>
               <section className="offer__reviews reviews">
-                {<ReviewsList reviews={offerCommentsState.offerComments} />}
+                {<ReviewsList reviews={reviews} />}
                 {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
               </section>
             </div>

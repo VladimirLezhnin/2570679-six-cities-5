@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../../api/api-actions';
 import { Link } from 'react-router-dom';
-import { AppDispatch, RootState } from '../..';
 import Header from '../../components/header/header';
 import { AppRoute, AuthorizationStatus } from '../../enums';
 import { navigateTo } from '../../utils/navigate/navigate-to';
 import { changeCity } from '../../store/action';
 import { Cities } from '../../mocks/cities';
 import { getRandomIntegerInRange } from '../../helpers/get-random-integer-in-range';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { selectAuthorizationStatus } from '../../store/selectors';
 
 
 function Login() {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [city] = useState(Cities[getRandomIntegerInRange(0, Cities.length - 1)]);
-
-  const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
 
   if (authorizationStatus === AuthorizationStatus.Auth) {
     navigateTo(AppRoute.Root);

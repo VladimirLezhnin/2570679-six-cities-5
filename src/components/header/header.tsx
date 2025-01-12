@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../..';
 import { AuthorizationStatus } from '../../enums';
-import { useDispatch } from 'react-redux';
 import { logoutAction } from '../../api/api-actions';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { selectAuthorizationStatus, selectFavoriteOffers, selectUserData } from '../../store/selectors';
 
 
 function Header() {
-  const dispatch = useDispatch<AppDispatch>();
-  const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
-  const userData = useSelector((state: RootState) => state.auth.userData);
-  const favorites = useSelector((state: RootState) => state.favoritesOffers.favoriteOffers);
+  const dispatch = useAppDispatch();
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+  const userData = useAppSelector(selectUserData);
+  const favorites = useAppSelector(selectFavoriteOffers);
 
   const handleSignoutButtonClick = (event: React.FormEvent) => {
     event.preventDefault();

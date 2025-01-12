@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../../..';
 import { sendComment } from '../../../api/api-actions';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../../hooks/use-app-selector';
+import { selectOfferId, selectReviewSendingStatus } from '../../../store/selectors';
+
 
 function ReviewForm() {
-  const dispatch = useDispatch<AppDispatch>();
-  const offerId = useSelector((state: RootState) => state.offerDetails?.offerDetails?.id);
-  const commentSendingStatus = useSelector((state: RootState) => state.offerComments.commentSendingStatus);
+  const dispatch = useAppDispatch();
+  const offerId = useAppSelector(selectOfferId);
+  const reviewSendingStatus = useAppSelector(selectReviewSendingStatus);
+
   const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
 
@@ -29,7 +32,7 @@ function ReviewForm() {
     setReview('');
   };
 
-  const isSubmitDisabled = !rating || review.length < 50 || review.length > 300 || commentSendingStatus;
+  const isSubmitDisabled = !rating || review.length < 50 || review.length > 300 || reviewSendingStatus;
 
   const titles = {
     5: 'perfect',
@@ -48,7 +51,7 @@ function ReviewForm() {
         {[5, 4, 3, 2, 1].map((value) => (
           <React.Fragment key={value}>
             <input
-              disabled={commentSendingStatus}
+              disabled={reviewSendingStatus}
               className="form__rating-input visually-hidden"
               name="rating"
               value={value}
@@ -70,7 +73,7 @@ function ReviewForm() {
         ))}
       </div>
       <textarea
-        disabled={commentSendingStatus}
+        disabled={reviewSendingStatus}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"

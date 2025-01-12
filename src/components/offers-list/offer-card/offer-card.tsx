@@ -2,19 +2,20 @@ import { Offer } from '../../../types';
 import { Link, useLocation } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../../enums';
 import { capitalizeFirstLetter } from '../../../helpers/capitalize-first-letter';
-import { useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../..';
-import { useDispatch } from 'react-redux';
 import { addOfferToFavorites, removeOfferFromFavorites } from '../../../api/api-actions';
 import { navigateTo } from '../../../utils/navigate/navigate-to';
 import { roundNumberWithTieBreak } from '../../../helpers/round-number-with-tiebreak';
+import { useAppSelector } from '../../../hooks/use-app-selector';
+import { selectAuthorizationStatus, selectFavoriteOffers } from '../../../store/selectors';
+import { useAppDispatch } from '../../../hooks/use-app-dispatch';
+import { useMemo } from 'react';
 
 type OfferCardProps = {
   offer: Offer;
   onMouseOver: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const GetStyleParameters = (pathName: string) => {
+const getStyleParameters = (pathName: string) => {
   const styleParametersForRootPage = {
     block: 'cities',
     imageWidth: '260',
@@ -42,13 +43,14 @@ const GetStyleParameters = (pathName: string) => {
 };
 
 function OfferCard({ offer: offer, onMouseOver: onMouseOver }: OfferCardProps) {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const { id, price, previewImage, title, rating, isPremium, type } = offer;
-  const { block, imageWidth, imageHeight } = GetStyleParameters(location.pathname);
-  const favoriteOffers = useSelector((state: RootState) => state.favoritesOffers.favoriteOffers);
+  const favoriteOffers = useAppSelector(selectFavoriteOffers);
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+  const styleParameters = useMemo(() => getStyleParameters(location.pathname), [location.pathname]);
+  const { block, imageWidth, imageHeight } = styleParameters;
   const isFavorite = favoriteOffers.some((favoriteOffer) => favoriteOffer.id === offer.id);
-  const authorizationStatus = useSelector((state: RootState) => state.auth.authorizationStatus);
-  const dispatch = useDispatch<AppDispatch>();
 
   const handleMouseEnter = () => {
     onMouseOver(id);

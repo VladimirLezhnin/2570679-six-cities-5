@@ -5,7 +5,7 @@ import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppRoute } from '../../enums';
-import PrivateRoute from '../private-route/private-route';
+import PrivateRoute from '../../hocs/private-route/private-route';
 import NavigationProvider from '../navigation-provider/navigation-provider';
 
 

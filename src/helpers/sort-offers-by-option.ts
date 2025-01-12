@@ -1,13 +1,13 @@
-import { SortingOption } from '../enums';
+import { SortingOptionName } from '../enums';
 import { Offer } from '../types';
 
-export function sortOffersByOption(offers: Offer[], option: SortingOption) {
+export function sortOffersByOption(offers: Offer[], option: SortingOptionName) {
   switch (option) {
-    case SortingOption.PriceLowHigh:
+    case SortingOptionName.PriceLowHigh:
       return [...offers].sort((a, b) => a.price - b.price);
-    case SortingOption.PriceHighLow:
+    case SortingOptionName.PriceHighLow:
       return [...offers].sort((a, b) => b.price - a.price);
-    case SortingOption.TopRated:
+    case SortingOptionName.TopRated:
       return [...offers].sort((a, b) => b.rating - a.rating);
     default:
       return offers;

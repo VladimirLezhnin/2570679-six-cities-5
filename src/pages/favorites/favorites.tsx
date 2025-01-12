@@ -1,15 +1,15 @@
-import { useSelector } from 'react-redux';
 import { Offer } from '../../types';
 import OffersList from '../../components/offers-list/offers-list';
-import { RootState } from '../..';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import FavoritesEmpty from './favorites-empty';
 import Footer from '../../components/footer/footer';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { selectFavoriteOffers } from '../../store/selectors';
 
 
 function FavoritesPage() {
-  const favoritesOffers = useSelector((state: RootState) => state.favoritesOffers.favoriteOffers);
+  const favoritesOffers = useAppSelector(selectFavoriteOffers);
   if (favoritesOffers.length === 0) {
     return <FavoritesEmpty/>;
   }

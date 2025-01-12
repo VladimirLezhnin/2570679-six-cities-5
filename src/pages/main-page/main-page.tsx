@@ -2,27 +2,25 @@ import OffersList from '../../components/offers-list/offers-list';
 import Map from '../../components/map/map';
 import CityList from './city-list/city-list';
 import { Cities } from '../../mocks/cities';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectOffersByCity } from '../../store/selectors';
+import { selectCity, selectOffersDataLoadingStatus, selectOffersInCitySortedByOption } from '../../store/selectors';
 import SortingOptions from './sorting-options/sorting-options';
-import { sortOffersByOption } from '../../helpers/sort-offers-by-option';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchOffers } from '../../api/api-actions';
-import { RootState, AppDispatch } from '../..';
-import SkeletonOffersLoader from '../../components/loaders/offers-loader/offers-loader';
+import OffersLoader from '../../components/loaders/offers-loader/offers-loader';
 import MainPageEmpty from './main-page-empty';
 import Header from '../../components/header/header';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 
 
 function MainPage() {
-  const dispatch = useDispatch<AppDispatch>();
-  const sortingOption = useSelector((state: RootState) => state.offers.offersSortingOption);
-  const offers = sortOffersByOption(useSelector(selectOffersByCity), sortingOption);
+  const dispatch = useAppDispatch();
+  const offers = useAppSelector(selectOffersInCitySortedByOption);
+  const isOffersDataLoading = useAppSelector(selectOffersDataLoadingStatus);
   const [activeOfferCardId, setActiveOfferCardId] = useState('');
   const onMouseOverOffer = useCallback(setActiveOfferCardId, [setActiveOfferCardId]);
   const activeOffer = offers.find((x) => x.id === activeOfferCardId);
-  const city = useSelector((state: RootState) => state.city);
-  const isOffersDataLoading = useSelector((state: RootState) => state.offers.isOffersDataLoading);
+  const city = useAppSelector(selectCity);
 
   useEffect(() => {
     if (!offers.length) {
@@ -45,10 +43,10 @@ function MainPage() {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offers.length} places to stay in {city.name}</b>
-                <SortingOptions/>
+                <SortingOptions />
                 <div className="cities__places-list places__list tabs__content">
                   {isOffersDataLoading
-                    ? <SkeletonOffersLoader count={10} />
+                    ? <OffersLoader count={10} />
                     : <OffersList offers={offers} onMouseOverOffer={onMouseOverOffer} />}
                 </div>
               </section>

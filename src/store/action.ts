@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import { City, OfferDetails } from '../types';
-import { SortingOption } from '../enums';
+import { SortingOptionName } from '../enums';
 
 const Action = {
   CHANGE_CITY: 'CHANGE_CITY',
@@ -13,7 +13,7 @@ export const changeCity = createAction(Action.CHANGE_CITY, (value: City) => ({
   payload: value,
 }));
 
-export const changeOffersSortingOption = createAction(Action.CHANGE_OFFERS_SORTING, (value: SortingOption) => ({
+export const changeOffersSortingOption = createAction(Action.CHANGE_OFFERS_SORTING, (value: SortingOptionName) => ({
   payload: value,
 }));
 

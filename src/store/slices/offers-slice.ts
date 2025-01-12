@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import { changeOffersSortingOption } from '../action';
 import { fetchOffers } from '../../api/api-actions';
 import { Offer } from '../../types';
-import { SortingOption } from '../../enums';
+import { SortingOptionName } from '../../enums';
 
 export interface OffersState {
   offers: Offer[];
   isOffersDataLoading: boolean;
-  offersSortingOption: SortingOption;
+  offersSortingOption: SortingOptionName;
 }
 
 const initialState: OffersState = {
   offers: [],
   isOffersDataLoading: false,
-  offersSortingOption: SortingOption.Popular
+  offersSortingOption: SortingOptionName.Popular
 };
 
 const offersSlice = createSlice({

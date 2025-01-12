@@ -57,19 +57,20 @@ export const fetchOffers = createAsyncThunk<Offer[], undefined, {
   },
 );
 
-export const fetchOfferDetails = createAsyncThunk<OfferDetails | undefined, string, {
-  dispatch: AppDispatch;
-  state: RootState;
-  extra: AxiosInstance;
+export const fetchOfferDetails = createAsyncThunk<OfferDetails, string, {
+    dispatch: AppDispatch;
+    state: RootState;
+    extra: AxiosInstance;
+    rejectValue: string;
 }>(
   'data/fetchOfferDetails',
-  async (offerId, { extra: api }) => {
+  async (offerId, { extra: api, rejectWithValue }) => {
     try {
       const { data } = await api.get<OfferDetails>(APIRoute.Offer.replace(':offerId', offerId));
       return data;
-    } catch {
+    } catch (error) {
       navigateTo(AppRoute.NotFoundPage);
-      return undefined;
+      return rejectWithValue('Failed to fetch offer details');
     }
   }
 );

@@ -5,12 +5,13 @@ import { Cities } from '../../mocks/cities';
 import { selectCity, selectOffersDataLoadingStatus, selectOffersInCitySortedByOption } from '../../store/selectors';
 import SortingOptions from './sorting-options/sorting-options';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchOffers } from '../../api/api-actions';
+import { fetchFavoriteOffers, fetchOffers } from '../../api/api-actions';
 import OffersLoader from '../../components/loaders/offers-loader/offers-loader';
 import MainPageEmpty from './main-page-empty';
 import Header from '../../components/header/header';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { useAppSelector } from '../../hooks/use-app-selector';
+import { OFFERS_PLACEHOLDERS_COUNT } from '../../const';
 
 
 function MainPage() {
@@ -26,6 +27,7 @@ function MainPage() {
     if (!offers.length) {
       dispatch(fetchOffers());
     }
+    dispatch(fetchFavoriteOffers());
   }, [dispatch, offers.length]);
 
   return (
@@ -46,7 +48,7 @@ function MainPage() {
                 <SortingOptions />
                 <div className="cities__places-list places__list tabs__content">
                   {isOffersDataLoading
-                    ? <OffersLoader count={10} />
+                    ? <OffersLoader count={OFFERS_PLACEHOLDERS_COUNT} />
                     : <OffersList offers={offers} onMouseOverOffer={onMouseOverOffer} />}
                 </div>
               </section>

@@ -1,14 +1,12 @@
 import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import { toast } from 'react-toastify';
 import { getToken } from './token';
+import { BACKEND_URL, REQUEST_TIMEOUT } from '../const';
 
 type DetailMessageType = {
   type: string;
   message: string;
 };
-
-const BACKEND_URL = 'https://14.design.htmlacademy.pro';
-const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({

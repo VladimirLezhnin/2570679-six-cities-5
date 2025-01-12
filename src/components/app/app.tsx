@@ -7,9 +7,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppRoute } from '../../enums';
 import PrivateRoute from '../../hocs/private-route/private-route';
 import NavigationProvider from '../navigation-provider/navigation-provider';
+import SpinnerLoader from '../loaders/spinner-loader/spinner-loader';
 
 
 function App() {
+  if (true)
+    return <SpinnerLoader/>
+
   return (
     <BrowserRouter>
       <NavigationProvider />

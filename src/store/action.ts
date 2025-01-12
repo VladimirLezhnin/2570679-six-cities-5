@@ -17,10 +17,6 @@ export const changeOffersSortingOption = createAction(Action.CHANGE_OFFERS_SORTI
   payload: value,
 }));
 
-export const setOffersLoadingStatus = createAction(Action.SET_OFFERS_LOADING_STATUS, (value: boolean) => ({
-  payload: value,
-}));
-
 export const setOfferDetails = createAction(Action.SET_OFFER_DETAILS, (value: OfferDetails) => ({
   payload: value,
 }));

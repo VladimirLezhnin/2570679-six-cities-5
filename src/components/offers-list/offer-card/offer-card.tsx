@@ -50,7 +50,7 @@ function OfferCard({ offer: offer, onMouseOver: onMouseOver }: OfferCardProps) {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const styleParameters = useMemo(() => getStyleParameters(location.pathname), [location.pathname]);
   const { block, imageWidth, imageHeight } = styleParameters;
-  const isFavorite = favoriteOffers.some((favoriteOffer) => favoriteOffer.id === offer.id);
+  const isFavorite = favoriteOffers === undefined ? false : favoriteOffers.some((favoriteOffer) => favoriteOffer.id === offer.id);
 
   const handleMouseEnter = () => {
     onMouseOver(id);
@@ -73,7 +73,7 @@ function OfferCard({ offer: offer, onMouseOver: onMouseOver }: OfferCardProps) {
   };
 
   return (
-    <article className={`${block}__card place-card`}
+    <article data-testid="offer-card" className={`${block}__card place-card`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

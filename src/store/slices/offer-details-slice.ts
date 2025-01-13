@@ -3,7 +3,7 @@ import { fetchOfferDetails } from '../../api/api-actions';
 import { setOfferDetails } from '../action';
 import { OfferDetails } from '../../types';
 
-interface OfferDetailsState {
+export interface OfferDetailsState {
   offerDetails: OfferDetails | undefined;
   isLoading: boolean;
 }

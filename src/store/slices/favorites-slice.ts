@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Offer } from '../../types';
 import { addOfferToFavorites, removeOfferFromFavorites, fetchFavoriteOffers } from '../../api/api-actions';
 
-interface FavoritesState {
+export interface FavoritesState {
   favoriteOffers: Offer[];
 }
 

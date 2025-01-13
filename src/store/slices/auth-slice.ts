@@ -4,7 +4,7 @@ import { AppRoute, AuthorizationStatus } from '../../enums';
 import { UserData } from '../../types';
 import { navigateTo } from '../../utils/navigate/navigate-to';
 
-interface AuthState {
+export interface AuthState {
   userData: UserData | undefined;
   authorizationStatus: AuthorizationStatus;
 }

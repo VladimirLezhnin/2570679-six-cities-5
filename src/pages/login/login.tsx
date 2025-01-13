@@ -43,10 +43,11 @@ function Login() {
             <h1 className="login__title">Sign in</h1>
             <form className="login__form form" onSubmit={handleSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">E-mail</label>
+                <label className="visually-hidden" htmlFor="email">E-mail</label>
                 <input
                   className="login__input form__input"
                   type="email"
+                  id="email"
                   name="email"
                   placeholder="Email"
                   required
@@ -55,10 +56,11 @@ function Login() {
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">Password</label>
+                <label className="visually-hidden" htmlFor="password">Password</label>
                 <input
                   className="login__input form__input"
                   type="password"
+                  id="password"
                   name="password"
                   placeholder="Password"
                   required

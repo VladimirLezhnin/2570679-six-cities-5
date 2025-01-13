@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { changeCity } from '../action';
 
-interface CityState {
+export interface CityState {
   name: string;
   location: {
     latitude: number;

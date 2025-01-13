@@ -8,6 +8,8 @@ import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
 import rootReducer from './store/root-reducer';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import HistoryRouter from './components/history-route/history-route';
+import browserHistory from './history';
 
 
 export const api = createAPI();
@@ -31,12 +33,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ToastContainer
-        position="bottom-left"
-        closeOnClick
-        pauseOnHover
-      />
-      <App />
+      <HistoryRouter history={browserHistory}>
+        <ToastContainer
+          position="bottom-left"
+          closeOnClick
+          pauseOnHover
+        />
+        <App />
+      </HistoryRouter>
     </Provider>
   </React.StrictMode>
 );

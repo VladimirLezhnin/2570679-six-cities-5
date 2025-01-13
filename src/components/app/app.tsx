@@ -3,15 +3,16 @@ import MainPage from '../../pages/main-page/main-page';
 import Login from '../../pages/login/login';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppRoute } from '../../enums';
 import PrivateRoute from '../../hocs/private-route/private-route';
 import NavigationProvider from '../navigation-provider/navigation-provider';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 function App() {
   return (
-    <BrowserRouter>
+    <HelmetProvider>
       <NavigationProvider />
       <Routes>
         <Route
@@ -45,7 +46,7 @@ function App() {
           element={<NotFoundPage />}
         />
       </Routes>
-    </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

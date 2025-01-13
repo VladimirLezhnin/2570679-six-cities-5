@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchNearOffers } from '../../api/api-actions';
 import { Offer } from '../../types';
 
-interface NearOffersState {
+export interface NearOffersState {
   nearOffers: Offer[];
 }
 

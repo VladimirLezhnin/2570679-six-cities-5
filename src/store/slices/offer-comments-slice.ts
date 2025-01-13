@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchOfferComments, sendComment } from '../../api/api-actions';
 import { Review } from '../../types';
 
-interface OfferCommentsState {
+export interface OfferCommentsState {
   offerComments: Review[];
   commentSendingStatus: boolean;
 }

@@ -8,13 +8,13 @@ describe('OfferGallery', () => {
     'img3',
   ];
 
-  it('должен рендерить контейнер галереи', () => {
+  it('should render the gallery container', () => {
     render(<OfferGallery imageSources={mockImages} />);
     const galleryContainer = screen.getByLabelText(/Offer gallery/i);
     expect(galleryContainer).toBeInTheDocument();
   });
 
-  it('должен отображать все изображения', () => {
+  it('should display all images', () => {
     render(<OfferGallery imageSources={mockImages} />);
     const images = screen.getAllByRole('img');
     expect(images).toHaveLength(mockImages.length);
@@ -25,13 +25,13 @@ describe('OfferGallery', () => {
     });
   });
 
-  it('должен отображать изображения в правильных обертках', () => {
+  it('should display images in correct wrappers', () => {
     render(<OfferGallery imageSources={mockImages} />);
     const wrappers = screen.getAllByTestId('image-wrapper');
     expect(wrappers).toHaveLength(mockImages.length);
   });
 
-  it('должен корректно обрабатывать пустой массив изображений', () => {
+  it('should handle empty image array correctly', () => {
     render(<OfferGallery imageSources={[]} />);
     const images = screen.queryAllByRole('img');
     expect(images).toHaveLength(0);

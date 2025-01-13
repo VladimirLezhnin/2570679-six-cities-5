@@ -1,22 +1,22 @@
 import { capitalizeFirstLetter } from './capitalize-first-letter';
 
 describe('capitalizeFirstLetter', () => {
-  it('должен капитализировать первую букву строки', () => {
+  it('should capitalize the first letter of the string', () => {
     expect(capitalizeFirstLetter('hello')).toBe('Hello');
     expect(capitalizeFirstLetter('world')).toBe('World');
     expect(capitalizeFirstLetter('h')).toBe('H');
   });
 
-  it('должен возвращать строку без изменений, если первая буква уже заглавная', () => {
+  it('should return the string unchanged if the first letter is already capitalized', () => {
     expect(capitalizeFirstLetter('Hello')).toBe('Hello');
     expect(capitalizeFirstLetter('World')).toBe('World');
   });
 
-  it('должен возвращать пустую строку, если входная строка пуста', () => {
+  it('should return an empty string if the input string is empty', () => {
     expect(capitalizeFirstLetter('')).toBe('');
   });
 
-  it('должен корректно обрабатывать строки, начинающиеся с не буквенных символов', () => {
+  it('should correctly handle strings starting with non-alphabetic characters', () => {
     expect(capitalizeFirstLetter('1hello')).toBe('1hello');
     expect(capitalizeFirstLetter('!world')).toBe('!world');
   });

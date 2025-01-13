@@ -44,7 +44,7 @@ describe('Component: FavoritesPage', () => {
     vi.clearAllMocks();
   });
 
-  it('должен рендерить FavoritesEmpty, когда список избранных предложений пуст', () => {
+  it('should render FavoritesEmpty when the list of favorite offers is empty', () => {
     (useAppSelector as unknown as Mock).mockReturnValue([]);
 
     const { withStoreComponent } = withStore(
@@ -70,7 +70,7 @@ describe('Component: FavoritesPage', () => {
     ).toBeInTheDocument();
   });
 
-  it('должен рендерить список избранных предложений, сгруппированных по городам', () => {
+  it('should render a list of featured offers grouped by city', () => {
     (useAppSelector as unknown as Mock).mockReturnValue(mockOffers);
 
     const { withStoreComponent } = withStore(

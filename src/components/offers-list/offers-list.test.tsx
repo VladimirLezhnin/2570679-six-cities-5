@@ -23,7 +23,7 @@ describe('Component: OffersList', () => {
     vi.clearAllMocks();
   });
 
-  it('должен рендерить правильное количество OfferCard', () => {
+  it('should render the correct amount of OfferCard', () => {
     const { withStoreComponent } = withStore(
       withHistory(<OffersList offers={mockOffers} onMouseOverOffer={mockOnMouseOverOffer} />, undefined),
       getFakeStore({

@@ -114,7 +114,7 @@ describe('OfferPage', () => {
     </MemoryRouter>
   );
 
-  it('должен рендерить компонент OfferPage', async () => {
+  it('should render the OfferPage component', async () => {
     renderComponent();
 
     expect(await screen.findByText('Beautiful Apartment')).toBeInTheDocument();
@@ -134,7 +134,7 @@ describe('OfferPage', () => {
     expect(screen.getByText('Other places in the neighbourhood')).toBeInTheDocument();
   });
 
-  it('должен dispatch действия при монтировании компонента', () => {
+  it('should dispatch actions when mounting the component', () => {
     renderComponent();
 
     expect(mockDispatch).toHaveBeenCalledWith(fetchOfferDetails('1'));
@@ -142,7 +142,7 @@ describe('OfferPage', () => {
     expect(mockDispatch).toHaveBeenCalledWith(fetchOfferComments('1'));
   });
 
-  it('не должен отображать ReviewForm, если пользователь не аутентифицирован', () => {
+  it('should not display ReviewForm if user is not authenticated', () => {
     mockState = {
       ...mockState,
       auth: {
@@ -156,7 +156,7 @@ describe('OfferPage', () => {
     expect(screen.queryByText(/Your review/i)).not.toBeInTheDocument();
   });
 
-  it('должен отображать список предложений поблизости', async () => {
+  it('should display near offers list', async () => {
     renderComponent();
 
     await waitFor(() => {
@@ -164,7 +164,7 @@ describe('OfferPage', () => {
     });
   });
 
-  it('должен отображать карту с предложениями', async () => {
+  it('should display map with near offers', async () => {
     renderComponent();
 
     await waitFor(() => {

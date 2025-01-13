@@ -1,7 +1,7 @@
 import { formatDateToMonthYear } from './format-date-to-month-year';
 
 describe('formatDateToMonthYear', () => {
-  it('должен форматировать дату в формате "Month Year"', () => {
+  it('should format the date in "Month Year" format', () => {
     const date = new Date('2023-10-13');
     expect(formatDateToMonthYear(date)).toBe('October 2023');
 
@@ -9,7 +9,7 @@ describe('formatDateToMonthYear', () => {
     expect(formatDateToMonthYear(date2)).toBe('January 1999');
   });
 
-  it('должен корректно обрабатывать различные даты', () => {
+  it('should handle different dates correctly', () => {
     const date = new Date('2020-02-29');
     expect(formatDateToMonthYear(date)).toBe('February 2020');
 

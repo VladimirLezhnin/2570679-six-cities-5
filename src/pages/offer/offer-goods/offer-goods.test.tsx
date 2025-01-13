@@ -4,25 +4,25 @@ import OfferGoods from './offer-goods';
 describe('OfferGoods', () => {
   const mockGoods = ['Wi-Fi', 'Heating', 'Kitchen', 'Cable TV'];
 
-  it('должен рендерить контейнер для списка', () => {
+  it('should render the container for the list', () => {
     render(<OfferGoods goods={mockGoods} />);
     const goodsContainer = screen.getByTestId('offer-goods');
     expect(goodsContainer).toBeInTheDocument();
   });
 
-  it('должен отображать заголовок', () => {
+  it('should display title', () => {
     render(<OfferGoods goods={mockGoods} />);
     const title = screen.getByText(/what's inside/i);
     expect(title).toBeInTheDocument();
   });
 
-  it('должен рендерить список удобств', () => {
+  it('should render a list of amenities', () => {
     render(<OfferGoods goods={mockGoods} />);
     const list = screen.getByTestId('goods-list');
     expect(list).toBeInTheDocument();
   });
 
-  it('должен отображать все переданные элементы', () => {
+  it('should display all passed elements', () => {
     render(<OfferGoods goods={mockGoods} />);
     const items = screen.getAllByTestId('goods-item');
     expect(items).toHaveLength(mockGoods.length);
@@ -32,7 +32,7 @@ describe('OfferGoods', () => {
     });
   });
 
-  it('должен корректно обрабатывать пустой массив', () => {
+  it('should handle empty array correctly', () => {
     render(<OfferGoods goods={[]} />);
     const items = screen.queryAllByTestId('goods-item');
     expect(items).toHaveLength(0);

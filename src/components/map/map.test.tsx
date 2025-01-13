@@ -29,7 +29,7 @@ describe('Component: Map', () => {
     point: { lat: 48.857, lng: 2.353, title: 'point 2' },
   };
 
-  it('должен рендерить карту с правильным блоком', () => {
+  it('should render the map with the correct block', () => {
     const block = 'cities';
     render(
       <Map
@@ -45,7 +45,7 @@ describe('Component: Map', () => {
     expect(mapElement).toHaveClass(`${block}__map`);
   });
 
-  it('должен рендерить карту даже без активного предложения', () => {
+  it('should render the map even without an active proposal', () => {
     render(
       <Map
         city={mockCity}
@@ -59,7 +59,7 @@ describe('Component: Map', () => {
     expect(mapElement).toBeInTheDocument();
   });
 
-  it('должен корректно работать с пустым списком предложений', () => {
+  it('should work correctly with an empty list of offers', () => {
     render(
       <Map
         city={mockCity}

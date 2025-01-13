@@ -75,7 +75,7 @@ describe('MainPage', () => {
     }));
   });
 
-  it('должен рендерить компонент главной страницы', () => {
+  it('should render the main page component', () => {
     render(
       <MemoryRouter>
         <MainPage />
@@ -85,7 +85,7 @@ describe('MainPage', () => {
     expect(screen.getByRole('main')).toBeInTheDocument();
   });
 
-  it('должен отображать индикатор загрузки, если данные еще загружаются', () => {
+  it('should display a loading indicator if data is still loading', () => {
     (useAppSelector as Mock).mockImplementation((selector) => {
       switch (selector) {
         case selectOffersInCitySortedByOption:
@@ -108,7 +108,7 @@ describe('MainPage', () => {
     expect(screen.getByTestId('offers-loader')).toBeInTheDocument();
   });
 
-  it('должен отображать предложения, когда данные загружены', async () => {
+  it('should display suggestions when data is loaded', async () => {
     render(
       <MemoryRouter>
         <MainPage />
@@ -121,7 +121,7 @@ describe('MainPage', () => {
     });
   });
 
-  it('должен отображать пустую страницу, если предложений нет', () => {
+  it('should display a blank page if there are no offers', () => {
     (useAppSelector as Mock).mockImplementation((selector) => {
       switch (selector) {
         case selectOffersInCitySortedByOption:
@@ -149,7 +149,7 @@ describe('MainPage', () => {
     ).toBeInTheDocument();
   });
 
-  it('должен dispatch fetchFavoriteOffers при монтировании компонента', () => {
+  it('should dispatch fetchFavoriteOffers when mounting the component', () => {
     render(
       <MemoryRouter>
         <MainPage />
@@ -159,7 +159,7 @@ describe('MainPage', () => {
     expect(mockDispatch).toHaveBeenCalledWith(fetchFavoriteOffers());
   });
 
-  it('должен рендерить карту с метками для предложений', async () => {
+  it('should render a map with labels for suggestions', async () => {
     render(
       <MemoryRouter>
         <MainPage />

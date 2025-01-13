@@ -30,25 +30,25 @@ describe('ReviewForm', () => {
     });
   });
 
-  it('должен рендерить форму', () => {
+  it('should render form', () => {
     render(<ReviewForm />);
     expect(screen.getByTestId('review-form')).toBeInTheDocument();
   });
 
-  it('должен рендерить элементы рейтинга', () => {
+  it('should render rating elements', () => {
     render(<ReviewForm />);
     for (let i = 1; i <= 5; i++) {
       expect(screen.getByTestId(`rating-${i}`)).toBeInTheDocument();
     }
   });
 
-  it('должен рендерить текстовое поле для отзыва', () => {
+  it('should render text field for review', () => {
     render(<ReviewForm />);
     const textarea = screen.getByTestId('review-textarea');
     expect(textarea).toBeInTheDocument();
   });
 
-  it('должен активировать кнопку "Submit" при валидных данных', () => {
+  it('must activate the "Submit" button if the data is valid', () => {
     render(<ReviewForm />);
     const ratingInput = screen.getByTestId('rating-5');
     const textarea = screen.getByTestId('review-textarea');
@@ -60,7 +60,7 @@ describe('ReviewForm', () => {
     expect(submitButton).not.toBeDisabled();
   });
 
-  it('должен отправлять данные при отправке формы', () => {
+  it('should send data when submitting form', () => {
     render(<ReviewForm />);
     const ratingInput = screen.getByTestId('rating-5');
     const textarea = screen.getByTestId('review-textarea');

@@ -5,22 +5,22 @@ describe('getRandomIntegerInRange', () => {
     vi.restoreAllMocks();
   });
 
-  it('должен возвращать min, если Math.random возвращает 0', () => {
+  it('should return min if Math.random returns 0', () => {
     vi.spyOn(Math, 'random').mockReturnValue(0);
     expect(getRandomIntegerInRange(5, 10)).toBe(5);
   });
 
-  it('должен возвращать max, если Math.random возвращает значение, близкое к 1', () => {
+  it('should return max if Math.random returns a value close to 1', () => {
     vi.spyOn(Math, 'random').mockReturnValue(0.9999999999);
     expect(getRandomIntegerInRange(5, 10)).toBe(10);
   });
 
-  it('должен возвращать среднее значение при Math.random возвращает 0.5', () => {
+  it('should return the average when Math.random returns 0.5', () => {
     vi.spyOn(Math, 'random').mockReturnValue(0.5);
     expect(getRandomIntegerInRange(5, 10)).toBe(8);
   });
 
-  it('должен корректно обрабатывать min равный max', () => {
+  it('should correctly handle min equal to max', () => {
     expect(getRandomIntegerInRange(7, 7)).toBe(7);
   });
 });

@@ -20,7 +20,7 @@ describe('CityList', () => {
     (useAppSelector as Mock).mockReturnValue(mockCurrentCity);
   });
 
-  it('должен рендерить список городов', () => {
+  it('should render a list of cities', () => {
     render(<CityList cities={mockCities} />);
 
     mockCities.forEach((city) => {
@@ -28,7 +28,7 @@ describe('CityList', () => {
     });
   });
 
-  it('должен вызывать dispatch при клике на город', () => {
+  it('should call dispatch when clicking on a city', () => {
     render(<CityList cities={mockCities} />);
 
     const parisLink = screen.getByText('Paris');
@@ -45,7 +45,7 @@ describe('CityList', () => {
       }));
   });
 
-  it('должен выделять активный город', () => {
+  it('should highlight the active city', () => {
     render(<CityList cities={mockCities} />);
 
     const parisLink = screen.getByText('Paris').parentNode;

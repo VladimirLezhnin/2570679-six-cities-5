@@ -24,12 +24,12 @@ describe('ReviewItem', () => {
     );
   });
 
-  it('должен рендерить компонент', () => {
+  it('should render the component', () => {
     render(<ReviewItem review={mockReview} />);
     expect(screen.getByRole('listitem')).toBeInTheDocument();
   });
 
-  it('должен отображать аватар пользователя', () => {
+  it('should display user avatar', () => {
     render(<ReviewItem review={mockReview} />);
     const avatar = screen.getByRole('img', { name: 'Reviews avatar' });
     expect(avatar).toBeInTheDocument();
@@ -37,18 +37,18 @@ describe('ReviewItem', () => {
     expect(avatar).toHaveAttribute('alt', 'Reviews avatar');
   });
 
-  it('должен отображать имя пользователя', () => {
+  it('should display username', () => {
     render(<ReviewItem review={mockReview} />);
     expect(screen.getByText(mockReview.user.name)).toBeInTheDocument();
   });
 
-  it('должен отображать рейтинг в виде звезд', () => {
+  it('should display star rating', () => {
     render(<ReviewItem review={mockReview} />);
     const ratingStars = screen.getByText('Rating').previousElementSibling;
     expect(ratingStars).toHaveStyle({ width: `${20 * mockReview.rating}%` });
   });
 
-  it('должен отображать комментарий', () => {
+  it('should display a comment', () => {
     render(<ReviewItem review={mockReview} />);
     expect(screen.getByText(mockReview.comment)).toBeInTheDocument();
   });

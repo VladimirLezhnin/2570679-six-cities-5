@@ -15,7 +15,7 @@ describe('Component: App', () => {
     mockHistory = createMemoryHistory();
   });
 
-  it('должен отрендерить MainPage по маршруту "/"', () => {
+  it('should render MainPage using route "/"', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
     const store = getFakeStore({
       offers: {
@@ -35,7 +35,7 @@ describe('Component: App', () => {
     expect(screen.getByText(/places to stay in/i)).toBeInTheDocument();
   });
 
-  it('должен отрендерить Login по маршруту "/login"', () => {
+  it('should render Login on the "/login" route', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
     const { withStoreComponent } = withStore(withHistoryComponent, getFakeStore());
 
@@ -48,7 +48,7 @@ describe('Component: App', () => {
     expect(screen.getByRole('button', { name: /Sign in/i })).toBeInTheDocument();
   });
 
-  it('должен отрендерить пустой FavoritesPage для авторизованного пользователя по маршруту "/favorites"', () => {
+  it('should render an empty FavoritesPage for the logged in user via the "/favorites" route', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
     const store = getFakeStore();
     store.auth.authorizationStatus = AuthorizationStatus.Auth;
@@ -61,7 +61,7 @@ describe('Component: App', () => {
     expect(screen.getByText(/Save properties to narrow down search or plan your future trips./i)).toBeInTheDocument();
   });
 
-  it('должен перенаправить на страницу NotFoundPage для несуществующего маршрута', () => {
+  it('should redirect to NotFoundPage for non-existent route', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
     const { withStoreComponent } = withStore(withHistoryComponent, getFakeStore());
 

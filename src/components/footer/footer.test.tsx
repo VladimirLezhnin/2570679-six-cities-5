@@ -5,7 +5,7 @@ import { withHistory, withStore } from '../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../utils/mock/get-fake-store';
 
 describe('Component: Footer', () => {
-  it('должен отображать ссылку на главную страницу с логотипом', () => {
+  it('should display a link to the main page with a logo', () => {
     const withHistoryComponent = withHistory(<Footer />, undefined);
     const { withStoreComponent } = withStore(withHistoryComponent, getFakeStore());
 

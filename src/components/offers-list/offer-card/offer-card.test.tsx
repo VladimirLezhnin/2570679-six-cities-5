@@ -40,7 +40,7 @@ describe('Component: OfferCard', () => {
     vi.clearAllMocks();
   });
 
-  it('должен отображать информацию о предложении корректно', () => {
+  it('should display offer information correctly', () => {
     const { withStoreComponent } = withStore(
       withHistory(<OfferCard offer={mockOffer} onMouseOver={mockOnMouseOver} />, undefined),
       getFakeStore({
@@ -61,7 +61,7 @@ describe('Component: OfferCard', () => {
     expect(screen.getByText(mockOffer.title)).toBeInTheDocument();
   });
 
-  it('должен вызывать onMouseOver при наведении мыши', () => {
+  it('should call onMouseOver on mouseover', () => {
     const { withStoreComponent } = withStore(
       withHistory(<OfferCard offer={mockOffer} onMouseOver={mockOnMouseOver} />, undefined),
       getFakeStore({
@@ -86,7 +86,7 @@ describe('Component: OfferCard', () => {
     expect(mockOnMouseOver).toHaveBeenCalledWith('');
   });
 
-  it('должен вызывать addOfferToFavorites при клике на bookmark, если предложение не в избранном и авторизован', async () => {
+  it('should call addOfferToFavorites when clicking on a bookmark, if the offer is not in favorites and is authorized', async () => {
     const { withStoreComponent, mockStore } = withStore(
       withHistory(<OfferCard offer={mockOffer} onMouseOver={mockOnMouseOver} />, undefined),
       getFakeStore({
@@ -114,7 +114,7 @@ describe('Component: OfferCard', () => {
     });
   });
 
-  it('должен вызывать removeOfferFromFavorites при клике на bookmark, если предложение в избранном и авторизован', async () => {
+  it('should call removeOfferFromFavorites when clicking on a bookmark, if the offer is in favorites and is authorized', async () => {
     const { withStoreComponent, mockStore } = withStore(
       withHistory(<OfferCard offer={mockOffer} onMouseOver={mockOnMouseOver} />, undefined),
       getFakeStore({
@@ -140,7 +140,7 @@ describe('Component: OfferCard', () => {
     });
   });
 
-  it('должен вызывать navigateTo при клике на bookmark, если пользователь не авторизован', () => {
+  it('should call navigateTo when clicking on bookmark if the user is not authorized', () => {
     const { withStoreComponent } = withStore(
       withHistory(<OfferCard offer={mockOffer} onMouseOver={mockOnMouseOver} />, undefined),
       getFakeStore({

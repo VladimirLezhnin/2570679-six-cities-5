@@ -19,7 +19,7 @@ describe('NotFoundPage', () => {
     vi.clearAllMocks();
   });
 
-  it('должен рендерить компонент с ошибкой 404', () => {
+  it('should render a component with a 404 error', () => {
     render(
       <MemoryRouter>
         <NotFoundPage />
@@ -34,7 +34,7 @@ describe('NotFoundPage', () => {
     expect(screen.getByText('Go back to homepage')).toBeInTheDocument();
   });
 
-  it('должен вызывать navigate с маршрутом на / при клике на кнопку', () => {
+  it('should call navigate with a route to / when the button is clicked', () => {
     render(
       <MemoryRouter>
         <NotFoundPage />

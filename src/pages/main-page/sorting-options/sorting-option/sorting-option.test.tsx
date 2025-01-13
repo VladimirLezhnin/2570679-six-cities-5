@@ -8,13 +8,13 @@ describe('SortingOption', () => {
   const option: SortingOptionName = SortingOptionName.PriceLowToHigh;
   const activeOption: SortingOptionName = SortingOptionName.PriceLowToHigh;
 
-  it('должен рендерить опцию сортировки', () => {
+  it('should render the sort option', () => {
     render(<SortingOption option={option} activeOption={activeOption} handleOptionClick={mockHandleOptionClick} />);
 
     expect(screen.getByText(option)).toBeInTheDocument();
   });
 
-  it('должен вызывать handleOptionClick при клике', () => {
+  it('should call handleOptionClick on click', () => {
     render(<SortingOption option={option} activeOption={activeOption} handleOptionClick={mockHandleOptionClick} />);
 
     fireEvent.click(screen.getByText(option));
@@ -22,7 +22,7 @@ describe('SortingOption', () => {
     expect(mockHandleOptionClick).toHaveBeenCalledWith(option);
   });
 
-  it('должен иметь класс "places__option--active" для активной опции', () => {
+  it('should have a class "places__option--active" for the active option', () => {
     render(<SortingOption option={option} activeOption={activeOption} handleOptionClick={mockHandleOptionClick} />);
 
     expect(screen.getByText(option)).toHaveClass('places__option--active');

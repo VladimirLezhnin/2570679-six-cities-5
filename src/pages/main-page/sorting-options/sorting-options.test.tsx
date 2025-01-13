@@ -19,7 +19,7 @@ describe('SortingOptions', () => {
     (useAppSelector as Mock).mockReturnValue(mockActiveOption);
   });
 
-  it('должен рендерить список опций сортировки', () => {
+  it('should render a list of sorting options', () => {
     render(<SortingOptions />);
 
     Object.values(SortingOptionName).forEach((option) => {
@@ -31,14 +31,14 @@ describe('SortingOptions', () => {
     });
   });
 
-  it('должен отображать активную опцию сортировки', () => {
+  it('should display active sort option', () => {
     render(<SortingOptions />);
 
     const activeItem = screen.getAllByText(SortingOptionName.PriceLowToHigh).length;
     expect(activeItem).toBe(2);
   });
 
-  it('должен открывать и закрывать список опций при клике на текущую опцию', () => {
+  it('should open and close the list of options when clicking on the current option', () => {
     render(<SortingOptions />);
 
     fireEvent.click(screen.getByTestId('toggleOptions'));
@@ -46,7 +46,7 @@ describe('SortingOptions', () => {
     expect(screen.getByTestId('options')).toHaveClass('places__options--opened');
   });
 
-  it('должен dispatch changeOffersSortingOption при клике на опцию', () => {
+  it('should dispatch changeOffersSortingOption when the option is clicked', () => {
     render(<SortingOptions />);
 
     const option = SortingOptionName.PriceLowToHigh;

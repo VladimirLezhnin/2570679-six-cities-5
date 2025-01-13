@@ -13,7 +13,6 @@ vi.mock('../../components/header/header', () => ({
   default: () => <div data-testid="header">Mocked Header</div>,
 }));
 
-
 vi.mock('../../utils/navigate/navigate-to', () => ({
   navigateTo: vi.fn(),
 }));
@@ -46,7 +45,7 @@ describe('Component: Login', () => {
     (useAppDispatch as unknown as Mock).mockReturnValue(mockDispatch);
   });
 
-  it('должен рендерить форму входа для неавторизованного пользователя', () => {
+  it('should render the login form for an unauthorized user', () => {
     (mockedUseAppSelector as unknown as Mock).mockReturnValue(AuthorizationStatus.NoAuth);
 
     const { withStoreComponent } = withStore(
@@ -68,7 +67,7 @@ describe('Component: Login', () => {
     expect(screen.getByRole('button', { name: /Sign in/i })).toBeInTheDocument();
   });
 
-  it('должен перенаправлять авторизованного пользователя на главную страницу', () => {
+  it('should redirect the authorized user to the home page', () => {
     (mockedUseAppSelector as unknown as Mock).mockReturnValue(AuthorizationStatus.Auth);
     const { withStoreComponent } = withStore(
       withHistory(<Login />),
@@ -84,7 +83,7 @@ describe('Component: Login', () => {
     expect(navigateTo).toHaveBeenCalledWith(AppRoute.Root);
   });
 
-  it('должен dispatch loginAction с правильными данными при отправке формы', () => {
+  it('should dispatch loginAction with correct data when submitting form', () => {
     (mockedUseAppSelector as unknown as Mock).mockReturnValue(AuthorizationStatus.NoAuth);
     const { withStoreComponent } = withStore(
       withHistory(<Login />),

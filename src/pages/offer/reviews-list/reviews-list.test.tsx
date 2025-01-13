@@ -8,19 +8,19 @@ import { getFakeReviews } from '../../../utils/mock/get-fake-reviews';
 describe('Component: ReviewsList', () => {
   const mockReviews: Review[] = getFakeReviews();
 
-  it('должен корректно отображать заголовок с количеством отзывов', () => {
+  it('should correctly display the title with the number of reviews', () => {
     render(<ReviewsList reviews={mockReviews} />);
     expect(screen.getByText(`${mockReviews.length}`)).toBeInTheDocument();
   });
 
-  it('должен отображать не больше MAX_DISPLAYED_REVIEWS_COUNT отзывов', () => {
+  it('should display no more than MAX_DISPLAYED_REVIEWS_COUNT reviews', () => {
     render(<ReviewsList reviews={mockReviews} />);
     const displayedReviews = screen.getAllByRole('listitem');
     const expectedCount = Math.min(mockReviews.length, MAX_DISPLAYED_REVIEWS_COUNT);
     expect(displayedReviews).toHaveLength(expectedCount);
   });
 
-  it('должен сортировать отзывы по дате в порядке убывания', () => {
+  it('should sort reviews by date in descending order', () => {
     render(<ReviewsList reviews={mockReviews} />);
 
     const sortedReviews = mockReviews
@@ -35,7 +35,7 @@ describe('Component: ReviewsList', () => {
     });
   });
 
-  it('должен корректно отображать пустой список, если нет отзывов', () => {
+  it('should correctly display an empty list if there are no reviews', () => {
     render(<ReviewsList reviews={[]} />);
     expect(screen.queryAllByRole('listitem')).toHaveLength(0);
     expect(screen.getByText('0')).toBeInTheDocument();

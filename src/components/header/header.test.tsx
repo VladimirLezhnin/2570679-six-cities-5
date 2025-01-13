@@ -18,7 +18,7 @@ vi.mock('../../api/api-actions', () => ({
 }));
 
 describe('Component: Header', () => {
-  it('должен отображать ссылки для неавторизованного пользователя', () => {
+  it('should display links to unauthorized user', () => {
     const withHistoryComponent = withHistory(<Header />, undefined);
     const store = getFakeStore();
     store.auth.authorizationStatus = AuthorizationStatus.NoAuth;
@@ -30,7 +30,7 @@ describe('Component: Header', () => {
     expect(screen.queryByText(/Sign out/i)).not.toBeInTheDocument();
   });
 
-  it('должен отображать информацию пользователя для авторизованного пользователя', () => {
+  it('should display user information to the authorized user', () => {
     const mockEmail = 'user@example.com';
     const withHistoryComponent = withHistory(<Header />, undefined);
     const { withStoreComponent } = withStore(withHistoryComponent, getFakeStore({
@@ -50,7 +50,7 @@ describe('Component: Header', () => {
     expect(screen.getByText(/Sign out/i)).toBeInTheDocument();
   });
 
-  it('должен вызывать logoutAction при клике на "Sign out"', async () => {
+  it('should call logoutAction when clicking on "Sign out"', async () => {
     const { withStoreComponent, mockStore } = withStore(<Header />, getFakeStore({
       auth: {
         authorizationStatus: AuthorizationStatus.Auth,

@@ -21,7 +21,7 @@ describe('citySlice', () => {
     const newCity: City = Cities[1];
     const action = { type: changeCity.type, payload: newCity };
     const state = cityReducer(initialState, action);
-    
+
     expect(state).toEqual({
       name: newCity.name,
       location: newCity.location,

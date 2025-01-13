@@ -17,11 +17,11 @@ import { OFFERS_PLACEHOLDERS_COUNT } from '../../const';
 function MainPage() {
   const dispatch = useAppDispatch();
   const offers = useAppSelector(selectOffersInCitySortedByOption);
+  const city = useAppSelector(selectCity);
   const isOffersDataLoading = useAppSelector(selectOffersDataLoadingStatus);
   const [activeOfferCardId, setActiveOfferCardId] = useState('');
   const onMouseOverOffer = useCallback(setActiveOfferCardId, [setActiveOfferCardId]);
   const activeOffer = offers.find((x) => x.id === activeOfferCardId);
-  const city = useAppSelector(selectCity);
 
   useEffect(() => {
     if (!offers.length) {
@@ -29,6 +29,10 @@ function MainPage() {
     }
     dispatch(fetchFavoriteOffers());
   }, [dispatch, offers.length]);
+
+  if (offers === undefined) {
+    return <MainPageEmpty cityName={city.name}/>;
+  }
 
   return (
     <div className="page page--gray page--main">

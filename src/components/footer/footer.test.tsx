@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Footer from './footer';
-import { withHistory, withStore } from '../../utils/with-store/with-store';
+import { withHistory, withStore } from '../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../utils/mock/get-fake-store';
 
 describe('Component: Footer', () => {

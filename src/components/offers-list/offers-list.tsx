@@ -14,6 +14,7 @@ function OffersList({offers, onMouseOverOffer: onMouseOverOffer}: OffersListProp
           key={offer.id}
           offer={offer}
           onMouseOver={onMouseOverOffer}
+          data-testid="offer-item"
         />
       ))}
     </>

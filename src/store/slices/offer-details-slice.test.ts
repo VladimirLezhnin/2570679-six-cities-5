@@ -18,7 +18,7 @@ describe('offerDetailsSlice', () => {
   it('should handle fetchOfferDetails.pending', () => {
     const action = { type: fetchOfferDetails.pending.type };
     const state = offerDetailsReducer(initialState, action);
-    
+
     expect(state).toEqual({
       ...initialState,
       isLoading: true,

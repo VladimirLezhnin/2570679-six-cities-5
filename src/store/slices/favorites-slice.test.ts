@@ -16,7 +16,7 @@ describe('favoritesSlice', () => {
     const newFavorite: Offer = getFakeOffers()[0];
     const action = { type: addOfferToFavorites.fulfilled.type, payload: newFavorite };
     const state = favoritesReducer(initialState, action);
-    
+
     expect(state).toEqual({
       ...initialState,
       favoriteOffers: [newFavorite],

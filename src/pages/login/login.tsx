@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { loginAction } from '../../api/api-actions';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
@@ -19,6 +19,12 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [city] = useState(Cities[getRandomIntegerInRange(0, Cities.length - 1)]);
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.Auth) {
+      navigateTo(AppRoute.Root);
+    }
+  }, [authorizationStatus]);
 
   if (authorizationStatus === AuthorizationStatus.Auth) {
     navigateTo(AppRoute.Root);
@@ -41,7 +47,7 @@ function Login() {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" onSubmit={handleSubmit}>
+            <form className="login__form form" onSubmit={handleSubmit} aria-label="form">
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden" htmlFor="email">E-mail</label>
                 <input

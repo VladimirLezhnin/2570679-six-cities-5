@@ -43,11 +43,11 @@ function ReviewForm() {
   };
 
   return (
-    <form className="reviews__form form" onSubmit={handleSubmit}>
+    <form className="reviews__form form" onSubmit={handleSubmit} data-testid="review-form">
       <label className="reviews__label form__label" htmlFor="review">
                 Your review
       </label>
-      <div className="reviews__rating-form form__rating">
+      <div className="reviews__rating-form form__rating" data-testid="rating-form">
         {[5, 4, 3, 2, 1].map((value) => (
           <React.Fragment key={value}>
             <input
@@ -59,6 +59,7 @@ function ReviewForm() {
               type="radio"
               checked={rating === String(value)}
               onChange={handleRatingChange}
+              data-testid={`rating-${value}`}
             />
             <label
               htmlFor={`${value}-stars`}
@@ -80,6 +81,7 @@ function ReviewForm() {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={review}
         onChange={handleReviewChange}
+        data-testid="review-textarea"
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -92,6 +94,7 @@ function ReviewForm() {
           className="reviews__submit form__submit button"
           type="submit"
           disabled={isSubmitDisabled}
+          data-testid="submit-button"
         >
                     Submit
         </button>

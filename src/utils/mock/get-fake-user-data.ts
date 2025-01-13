@@ -6,7 +6,7 @@ export function getFakeUserData() : UserData {
     name: name.findName(),
     avatarUrl: internet.url(),
     isPro: false,
-    email: "user@example.com",
+    email: 'user@example.com',
     token: internet.password()
   };
 

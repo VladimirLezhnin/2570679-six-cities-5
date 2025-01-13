@@ -1,15 +1,12 @@
-// src/pages/favorites/favorites.test.tsx
-
 import { Mock, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import FavoritesPage from './favorites';
-import { withHistory, withStore } from '../../utils/with-store/with-store';
+import { withHistory, withStore } from '../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../utils/mock/get-fake-store';
 import { AuthorizationStatus } from '../../enums';
 import { getFakeOffers } from '../../utils/mock/get-fake-offers';
 import { Offer } from '../../types';
-
 
 vi.mock('../../components/header/header', () => ({
   default: () => <div data-testid="header">Mocked Header</div>,
@@ -20,13 +17,15 @@ vi.mock('../../components/footer/footer', () => ({
 }));
 
 vi.mock('../../components/offers-list/offers-list', () => ({
-  default: vi.fn(({ offers }) => (
+  default: vi.fn(({ offers }: { offers?: Offer[] }) => (
     <div data-testid="offers-list">
-      {offers.map((offer: Offer) => (
-        <div key={offer.id} data-testid="offer-item">
-          {offer.title}
-        </div>
-      ))}
+      {offers
+        ? offers.map((offer: Offer) => (
+          <div key={offer.id} data-testid="offer-item">
+            {offer.title}
+          </div>
+        ))
+        : null}
     </div>
   )),
 }));

@@ -1,6 +1,6 @@
-export function capitalizeFirstLetter(str: string): string {
-  if (!str) {
-    return str;
+export function capitalizeFirstLetter(word: string): string {
+  if (!word) {
+    return word;
   }
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }

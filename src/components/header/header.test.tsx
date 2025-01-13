@@ -1,17 +1,18 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Header from './header';
-import { withHistory, withStore } from '../../utils/with-store/with-store';
+import { withHistory, withStore } from '../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../utils/mock/get-fake-store';
 import { AuthorizationStatus } from '../../enums';
 import { logoutAction } from '../../api/api-actions';
 import { getFakeUserData } from '../../utils/mock/get-fake-user-data';
 import { getFakeOffers } from '../../utils/mock/get-fake-offers';
+import { AppDispatch } from '../..';
 
 
 vi.mock('../../api/api-actions', () => ({
-  logoutAction: vi.fn(() => async (dispatch: any) => {
-    await new Promise(resolve => setTimeout(resolve, 100));
+  logoutAction: vi.fn(() => async (dispatch: AppDispatch) => {
+    await new Promise((resolve) => setTimeout(resolve, 100));
     dispatch({ type: 'LOGOUT' });
   }),
 }));
@@ -45,7 +46,7 @@ describe('Component: Header', () => {
     render(withStoreComponent);
 
     expect(screen.getByText(mockEmail)).toBeInTheDocument();
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
     expect(screen.getByText(/Sign out/i)).toBeInTheDocument();
   });
 
@@ -69,7 +70,7 @@ describe('Component: Header', () => {
 
     await waitFor(() => {
       expect(logoutAction).toHaveBeenCalled();
-      
+
       const actions = mockStore.getActions();
       expect(actions).toContainEqual({ type: 'LOGOUT' });
     });

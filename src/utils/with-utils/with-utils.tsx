@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { Action } from 'redux';
 import { AppThunkDispatch } from '../../api/api-actions.test';
 import { Provider } from 'react-redux';
-import HistoryRouter from '../../components/history-route/history-route';
+import HistoryRouter from '../../hocs/history-route/history-route';
 
 
 export function withHistory(component: JSX.Element, history?: MemoryHistory) {

@@ -1,15 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import authReducer, { AuthState } from './auth-slice';
-import { checkAuthAction, loginAction, logoutAction } from '../../api/api-actions';
-import { AuthorizationStatus, AppRoute } from '../../enums';
+import { checkAuthAction, logoutAction } from '../../api/api-actions';
+import { AuthorizationStatus } from '../../enums';
 import { UserData } from '../../types';
 import { getFakeUserData } from '../../utils/mock/get-fake-user-data';
 
 vi.mock('../../../utils/navigate/navigate-to', () => ({
   navigateTo: vi.fn(),
 }));
-
-import { navigateTo, setNavigateFunction } from '../../utils/navigate/navigate-to';
 
 describe('authSlice', () => {
   const initialState: AuthState = {
@@ -35,7 +33,7 @@ describe('authSlice', () => {
       userData: mockUserData,
     });
   });
-  
+
   it('should handle logoutAction.fulfilled', () => {
     const populatedState: AuthState = {
       authorizationStatus: AuthorizationStatus.Auth,

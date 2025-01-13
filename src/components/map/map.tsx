@@ -72,6 +72,7 @@ function Map({ city, offersLocations, activeOfferLocation, block }: MapProps): J
 
   return (
     <section
+      data-testid="map"
       className={`${block}__map map`}
       ref={mapRef}
       style={{

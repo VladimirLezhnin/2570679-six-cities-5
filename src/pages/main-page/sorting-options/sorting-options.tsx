@@ -13,7 +13,7 @@ function SortingOptions() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOptions = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen((previousState) => !previousState);
   };
 
   const handleOptionClick = (option: SortingOptionName) => {
@@ -28,13 +28,14 @@ function SortingOptions() {
         className="places__sorting-type"
         tabIndex={0}
         onClick={toggleOptions}
+        data-testid="toggleOptions"
       >
         {activeOption}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${isOpen ? 'places__options--opened' : ''}`}>
+      <ul data-testid='options' className={`places__options places__options--custom ${isOpen ? 'places__options--opened' : ''}`}>
         {Object.values(SortingOptionName).map((option) =>
           <SortingOption key={option} option={option} activeOption={activeOption} handleOptionClick={handleOptionClick}/>
         )}

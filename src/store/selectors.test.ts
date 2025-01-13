@@ -175,7 +175,7 @@ describe('Redux Selectors', () => {
           ...initialState,
           offers: {
             ...initialState.offers,
-            offersSortingOption: SortingOptionName.PriceLowHigh,
+            offersSortingOption: SortingOptionName.PriceLowToHigh,
           },
         };
 
@@ -194,7 +194,7 @@ describe('Redux Selectors', () => {
           ...initialState,
           offers: {
             ...initialState.offers,
-            offersSortingOption: SortingOptionName.PriceHighLow,
+            offersSortingOption: SortingOptionName.PriceHighToLow,
           },
         };
 
@@ -213,7 +213,7 @@ describe('Redux Selectors', () => {
           ...initialState,
           offers: {
             ...initialState.offers,
-            offersSortingOption: SortingOptionName.TopRated,
+            offersSortingOption: SortingOptionName.TopRatedFirst,
           },
         };
 

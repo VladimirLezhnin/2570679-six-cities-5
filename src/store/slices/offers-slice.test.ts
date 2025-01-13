@@ -19,7 +19,7 @@ describe('offersSlice', () => {
   it('should handle fetchOffers.pending', () => {
     const action = { type: fetchOffers.pending.type };
     const state = offersReducer(initialState, action);
-    
+
     expect(state).toEqual({
       ...initialState,
       isOffersDataLoading: true,
@@ -49,7 +49,7 @@ describe('offersSlice', () => {
   });
 
   it('should handle changeOffersSortingOption', () => {
-    const newSortingOption = SortingOptionName.PriceLowHigh;
+    const newSortingOption = SortingOptionName.PriceLowToHigh;
     const action = { type: changeOffersSortingOption.type, payload: newSortingOption };
     const state = offersReducer(initialState, action);
 

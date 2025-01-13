@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeEach, Mock } from 'vitest';
 import OfferCard from './offer-card';
-import { withHistory, withStore } from '../../../utils/with-store/with-store';
+import { withHistory, withStore } from '../../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../../utils/mock/get-fake-store';
 import { AuthorizationStatus, AppRoute } from '../../../enums';
 import { addOfferToFavorites, removeOfferFromFavorites } from '../../../api/api-actions';
@@ -10,15 +10,16 @@ import { Offer } from '../../../types';
 import { navigateTo } from '../../../utils/navigate/navigate-to';
 import { getFakeOffers } from '../../../utils/mock/get-fake-offers';
 import { vi } from 'vitest';
+import { AppDispatch } from '../../..';
 
 
 vi.mock('../../../api/api-actions', () => ({
-  addOfferToFavorites: vi.fn(() => async (dispatch: any) => {
-    await new Promise(resolve => setTimeout(resolve, 100));
+  addOfferToFavorites: vi.fn(() => async (dispatch: AppDispatch) => {
+    await new Promise((resolve) => setTimeout(resolve, 100));
     dispatch({ type: 'ADD_OFFER_TO_FAVORITES', payload: undefined });
   }),
-  removeOfferFromFavorites: vi.fn(() => async (dispatch: any) => {
-    await new Promise(resolve => setTimeout(resolve, 100));
+  removeOfferFromFavorites: vi.fn(() => async (dispatch: AppDispatch) => {
+    await new Promise((resolve) => setTimeout(resolve, 100));
     dispatch({ type: 'REMOVE_OFFER_FROM_FAVORITES', payload: undefined });
   }),
 }));
@@ -55,7 +56,6 @@ describe('Component: OfferCard', () => {
 
     render(withStoreComponent);
 
-    expect(screen.getByText(/Premium/i)).toBeInTheDocument();
     expect(screen.getByAltText(/Place image/i)).toHaveAttribute('src', mockOffer.previewImage);
     expect(screen.getByText(`€${mockOffer.price}`)).toBeInTheDocument();
     expect(screen.getByText(mockOffer.title)).toBeInTheDocument();

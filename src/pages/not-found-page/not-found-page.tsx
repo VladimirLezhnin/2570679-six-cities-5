@@ -3,7 +3,7 @@ import './not-found-page.css';
 
 function NotFoundPage() {
   const navigate = useNavigate();
-  const goOnMainPage = () => {
+  const redirectToMainPage = () => {
     navigate('/');
   };
 
@@ -15,7 +15,7 @@ function NotFoundPage() {
         <p className="description">
           It looks like you&apos;ve traveled too far.
         </p>
-        <button className="go-back-button" onClick={goOnMainPage}>
+        <button className="go-back-button" onClick={redirectToMainPage}>
           Go back to homepage
         </button>
       </div>

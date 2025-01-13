@@ -16,7 +16,7 @@ describe('nearOffersSlice', () => {
     const mockNearOffers: Offer[] = getFakeOffers();
     const action = { type: fetchNearOffers.fulfilled.type, payload: mockNearOffers };
     const state = nearOffersReducer(initialState, action);
-    
+
     expect(state).toEqual({
       ...initialState,
       nearOffers: mockNearOffers,

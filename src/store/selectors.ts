@@ -34,11 +34,11 @@ export const selectOffersInCitySortedByOption = createSelector(
   (offers, option) => {
     if (Array.isArray(offers)) {
       switch (option) {
-        case SortingOptionName.PriceLowHigh:
+        case SortingOptionName.PriceLowToHigh:
           return [...offers].sort((a, b) => a.price - b.price);
-        case SortingOptionName.PriceHighLow:
+        case SortingOptionName.PriceHighToLow:
           return [...offers].sort((a, b) => b.price - a.price);
-        case SortingOptionName.TopRated:
+        case SortingOptionName.TopRatedFirst:
           return [...offers].sort((a, b) => b.rating - a.rating);
         default:
           return offers;

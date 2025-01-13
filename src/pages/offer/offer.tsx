@@ -63,7 +63,7 @@ function OfferPage() {
       <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
-          {<OfferGallery imagesSources={images} />}
+          {<OfferGallery imageSources={images} />}
           <div className="offer__container container">
             <div className="offer__wrapper">
               {
@@ -82,6 +82,7 @@ function OfferPage() {
                     : ''}`}
                   type="button"
                   onClick={handleBookmarkClick}
+                  data-testid="to-bookmarks-button"
                 >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>

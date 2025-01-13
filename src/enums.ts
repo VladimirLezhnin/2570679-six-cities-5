@@ -26,7 +26,7 @@ export enum AuthorizationStatus {
 
 export enum SortingOptionName {
     Popular = 'Popular',
-    PriceLowHigh = 'Price: low to high',
-    PriceHighLow = 'Price: high to low',
-    TopRated = 'Top rated first'
+    PriceLowToHigh = 'Price: low to high',
+    PriceHighToLow = 'Price: high to low',
+    TopRatedFirst = 'Top rated first'
 }

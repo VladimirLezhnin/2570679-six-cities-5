@@ -17,7 +17,7 @@ describe('offerCommentsSlice', () => {
     const mockReviews: Review[] = getFakeReviews();
     const action = { type: fetchOfferComments.fulfilled.type, payload: mockReviews };
     const state = offerCommentsReducer(initialState, action);
-    
+
     expect(state).toEqual({
       ...initialState,
       offerComments: mockReviews,

@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { checkAuthAction, loginAction, logoutAction, } from '../../api/api-actions';
-import { AppRoute, AuthorizationStatus } from '../../enums';
+import { AuthorizationStatus } from '../../enums';
 import { UserData } from '../../types';
-import { navigateTo } from '../../utils/navigate/navigate-to';
+
 
 export interface AuthState {
   userData: UserData | undefined;
@@ -27,7 +27,6 @@ const authSlice = createSlice({
       .addCase(loginAction.fulfilled, (state, action) => {
         state.userData = action.payload;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        navigateTo(AppRoute.Root);
       })
       .addCase(logoutAction.fulfilled, (state) => {
         state.userData = undefined;

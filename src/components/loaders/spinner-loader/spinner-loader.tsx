@@ -68,7 +68,7 @@ function SpinnerLoader() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} data-testid="spinner-loader">
       <svg
         width="60"
         height="60"

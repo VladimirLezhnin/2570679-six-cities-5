@@ -1,4 +1,3 @@
-// src/components/offers-loader/offers-loader.tsx
 import { v4 as uuidv4 } from 'uuid';
 import './offers-loader.css';
 
@@ -10,7 +9,7 @@ function OffersLoader({ count }: OffersLoaderProps) {
   const numbers = Array.from({ length: count }, () => uuidv4());
 
   return (
-    <>
+    <div data-testid="offers-loader">
       {numbers.map((item) => (
         <div key={item} className="skeleton-card" data-testid="skeleton-card">
           <div className="skeleton-image" data-testid="skeleton-image"></div>
@@ -19,7 +18,7 @@ function OffersLoader({ count }: OffersLoaderProps) {
           <div className="skeleton-text skeleton-price" data-testid="skeleton-price"></div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

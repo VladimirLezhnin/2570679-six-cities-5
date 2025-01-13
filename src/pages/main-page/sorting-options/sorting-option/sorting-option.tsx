@@ -14,9 +14,10 @@ function buildClassName(option: SortingOptionName, activeOption: SortingOptionNa
 function SortingOption({option, activeOption, handleOptionClick}: SortingOptionProps) {
   return (
     <li className={buildClassName(option, activeOption)}
+      data-testid={option}
       key={option}
-      onClick={(e) => {
-        e.preventDefault();
+      onClick={(event) => {
+        event.preventDefault();
         handleOptionClick(option);
       }}
     >

@@ -25,8 +25,8 @@ function CityList({cities}: CityListProps) {
             <a
               className={`locations__item-link tabs__item ${city.name === currentCity.name ? 'tabs__item--active' : ''
               }`}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={(event) => {
+                event.preventDefault();
                 handleCityClick(city);
               }}
             >

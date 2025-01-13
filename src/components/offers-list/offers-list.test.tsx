@@ -1,15 +1,15 @@
 import { vi } from 'vitest';
 
 vi.mock('../offer-card/offer-card', () => ({
-    default: vi.fn(({ offer }) => (
-    <div data-testid="offer-card">{offer.title}</div>
+  default: vi.fn(({ title } : Offer) => (
+    <div data-testid="offer-card">{title}</div>
   )),
 }));
 
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import OffersList from './offers-list';
-import { withHistory, withStore } from '../../utils/with-store/with-store';
+import { withHistory, withStore } from '../../utils/with-utils/with-utils';
 import { getFakeStore } from '../../utils/mock/get-fake-store';
 import { AuthorizationStatus } from '../../enums';
 import { Offer } from '../../types';

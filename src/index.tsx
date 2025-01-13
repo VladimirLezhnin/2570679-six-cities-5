@@ -8,7 +8,7 @@ import { checkAuthAction, fetchFavoriteOffers } from './api/api-actions';
 import rootReducer from './store/root-reducer';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import HistoryRouter from './components/history-route/history-route';
+import HistoryRouter from './hocs/history-route/history-route';
 import browserHistory from './history';
 
 

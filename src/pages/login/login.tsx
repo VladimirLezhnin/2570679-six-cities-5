@@ -26,11 +26,6 @@ function Login() {
     }
   }, [authorizationStatus]);
 
-  if (authorizationStatus === AuthorizationStatus.Auth) {
-    navigateTo(AppRoute.Root);
-    return null;
-  }
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(loginAction({ email, password }));

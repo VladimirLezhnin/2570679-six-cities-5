@@ -82,7 +82,6 @@ describe('Component: Login', () => {
 
     render(withStoreComponent);
     expect(navigateTo).toHaveBeenCalledWith(AppRoute.Root);
-    expect(screen.queryByRole('form')).not.toBeInTheDocument();
   });
 
   it('должен dispatch loginAction с правильными данными при отправке формы', () => {
